@@ -59,4 +59,5 @@ List of static site generator, ranked by popularity: https://staticsitegenerator
 - [ ] Remove public/ folder from master branch
 - [ ] Choose a better theme
 - [ ] The theme's image does not show up on github, but the blog images do.
+- [ ] Remove the /asset/ prefix as the route already contains "/static/asset"
 - [ ] Find a solution for [repository larger than 2GB](https://blog.bitbucket.org/2014/05/30/repository-size-limits/)
