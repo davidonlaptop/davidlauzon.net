@@ -1,9 +1,16 @@
-baseurl = "http://localhost/"
+baseurl = "https://davidonlaptop.github.io/"
 languageCode = "en-us"
 title = "Encounters with the World Wild Web"
 theme = "hugo_theme_robust"
 
+# See "canonical URL caveat" @ https://gohugo.io/extras/urls/
+canonifyurls = true
+
+[taxonomies]
+tag = "tags"
+category = "categories"
+
 [Params]
-  Author = "David Lauzon"
-  GitHubUser = "davidonlaptop"
-  disqusShortname = "davidlauzon"
+Author = "David Lauzon"
+GitHubUser = "davidonlaptop"
+disqusShortname = "davidlauzon"
