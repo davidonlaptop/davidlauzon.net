@@ -8,6 +8,12 @@
 #
 ###
 
+#
+# CONFIGURE THE $REPO VARIABLE TO MATCH YOUR GIT REPOSITORY
+#
+REPO="git@github.com:davidonlaptop/davidonlaptop.github.io.git"
+#REPO="git@github.com:spencerlyon2/hugo_gh_blog.git"
+
 # Create a new orphand branch (no commit history) named gh-pages
 git checkout --orphan gh-pages
 
@@ -31,10 +37,10 @@ git checkout master
 rm -rf public
 
 # Add the gh-pages branch of the repository. It will look like a folder named public
-git subtree add --prefix=public git@github.com:spencerlyon2/hugo_gh_blog.git gh-pages --squash
+git subtree add --prefix=public $REPO gh-pages --squash
 
 # Pull down the file we just committed. This helps avoid merge conflicts
-git subtree pull --prefix=public git@github.com:spencerlyon2/hugo_gh_blog.git gh-pages
+git subtree pull --prefix=public $REPO gh-pages
 
 # Run hugo. Generated site will be placed in public directory (or omit -t ThemeName if you're not using a theme)
 hugo -t ThemeName
@@ -47,5 +53,5 @@ git add -A
 git commit -m "Updating site" && git push origin master
 
 # Push the public subtree to the gh-pages branch
-git subtree push --prefix=public git@github.com:spencerlyon2/hugo_gh_blog.git gh-pages
+git subtree push --prefix=public $REPO gh-pages
 
