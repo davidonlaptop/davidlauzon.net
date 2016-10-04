@@ -1,16 +1,135 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Encounters with the World Wild Web </title>
-    <link>http://localhost/tags/apache/</link>
+    <title>Apache on Encounters with the World Wild Web</title>
+    <link>https://davidonlaptop.github.io/davidlauzon.net/tags/apache/</link>
+    <description>Recent content in Apache on Encounters with the World Wild Web</description>
+    <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <author>David Lauzon</author>
-    <rights>(C) 2011</rights>
-    <updated>2011-06-29 23:11:36 &#43;0000 &#43;0000</updated>
-
+    <lastBuildDate>Wed, 29 Jun 2011 23:11:36 +0000</lastBuildDate>
+    <atom:link href="https://davidonlaptop.github.io/davidlauzon.net/tags/apache/index.xml" rel="self" type="application/rss+xml" />
     
+    <item>
+      <title>Apache virtual host using a symlink to home directory</title>
+      <link>https://davidonlaptop.github.io/davidlauzon.net/2011/06/apache-virtual-host-using-a-symlink-to-home-directory/</link>
+      <pubDate>Wed, 29 Jun 2011 23:11:36 +0000</pubDate>
       
-    
+      <guid>https://davidonlaptop.github.io/davidlauzon.net/2011/06/apache-virtual-host-using-a-symlink-to-home-directory/</guid>
+      <description>
 
+&lt;h2 id=&#34;forbidden-you-don-8217-t-have-the-permission-to-access-on-this-server&#34;&gt;Forbidden : You don&amp;#8217;t have the permission to access / on this server.&lt;/h2&gt;
+
+&lt;p&gt;If you see this error message, then perhaps you&amp;#8217;re trying to use an Apache virtual host that&amp;#8217;s located somewhere in your home directory?&lt;/p&gt;
+
+&lt;p&gt;Well this could be because Apache doesn&amp;#8217;t have the permissions to traverse the directory, and this post explains how to fix it with complete config files.&lt;/p&gt;
+
+&lt;p&gt;In my case, my default apache document root is /var/www and I want to server &lt;code&gt;/var/www/potdigger&lt;/code&gt; which is a symlink to &lt;code&gt;/home/david/workspace/php/potdigger_backend&lt;/code&gt; .&lt;/p&gt;
+
+&lt;h2 id=&#34;find-out-what-user-the-apache-process-is-using&#34;&gt;Find out what user the Apache process is using&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;david@dragdroid:~$ ps auxf |grep apache
+david    23857  0.0  0.0   5304   856 pts/0    S+   18:00   0:00  |   \_ grep --color=auto apache
+root     23381  0.0  0.0   5652  2628 ?        Ss   17:25   0:00 /usr/sbin/apache2 -k start
+www-data 23384  0.0  0.0   5424  1816 ?        S    17:25   0:00  \_ /usr/sbin/apache2 -k start
+www-data 23386  0.0  0.0 227328  2820 ?        Sl   17:25   0:00  \_ /usr/sbin/apache2 -k start
+www-data 23387  0.0  0.0 227208  2624 ?        Sl   17:25   0:00  \_ /usr/sbin/apache2 -k start
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;In my case (Ubuntu), the user is &lt;code&gt;www-data&lt;/code&gt;. Note : Your process could be named httpd instead of apache.&lt;/p&gt;
+
+&lt;h2 id=&#34;login-with-this-user-to-see-which-directories-causes-problem&#34;&gt;Login with this user to see which directories causes problem.&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;david@dragdroid:~$ sudo -i -u www-data
+[sudo] password for david: 
+$ ls /var/www/ -l
+total 12
+-rw-r--r-- 1 root  root   177 2011-06-29 15:30 index.html
+lrwxrwxrwx 1 root  root    43 2011-06-29 16:13 potdigger -&amp;gt; /home/david/workspace/php/potdigger_backend
+$ cd potdigger
+cd: 2: can&#39;t cd to potdigger
+$ cd /home/david/workspace/php/potdigger_backend
+cd: 3: can&#39;t cd to /home/david/workspace/php/potdigger_backend
+$ cd /home/david/workspace/php
+cd: 5: can&#39;t cd to /home/david/workspace/php
+$ cd /home/david/workspace    
+cd: 6: can&#39;t cd to /home/david/workspace
+$ cd /home/david 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now we see that we can get to &lt;code&gt;/home/david&lt;/code&gt; without any problem. It&amp;#8217;s the &lt;code&gt;workspace/php/potdigger_backend&lt;/code&gt; path that it can&amp;#8217;t access.&lt;/p&gt;
+
+&lt;h2 id=&#34;set-the-executable-permission-on-these-directories&#34;&gt;Set the executable permission on these directories.&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;david@dragdroid:~$ pwd
+/home/david
+david@dragdroid:~$ chmod a+x workspace workspace/php workspace/php/potdigger_backend
+david@dragdroid:~$
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Open a new terminal window (so that you use your logon user) and type :&lt;/p&gt;
+
+&lt;h2 id=&#34;verify-that-it-works&#34;&gt;Verify that it works&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ cd /home/david/workspace/php/potdigger_backend
+$ pwd
+/home/david/workspace/php/potdigger_backend
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Use the first window (logged in as &lt;code&gt;www_data&lt;/code&gt;) and type :&lt;/p&gt;
+
+&lt;h2 id=&#34;reload-the-apache-configuration-and-boom&#34;&gt;Reload the apache configuration, and boom!&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;david@dragdroid:~$ sudo /etc/init.d/apache2 reload
+[sudo] password for david: 
+ * Reloading web server config apache2                                                                                                                                                                                                       apache2: Could not reliably determine the server&#39;s fully qualified domain name, using 127.0.1.1 for ServerName                                                                                                                                                                                                        [ OK ]
+david@dragdroid:~$
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Here&amp;#8217;s my vhost related config :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;NameVirtualHost *:80
+&amp;lt;VirtualHost *:80&amp;gt;
+        ServerName potdigger
+
+        DocumentRoot /var/www/potdigger
+        &amp;lt;Directory /var/www/potdigger&amp;gt;
+                Options Indexes FollowSymLinks MultiViews
+                AllowOverride All
+                Order allow,deny
+                allow from all
+        &amp;lt;/Directory&amp;gt;
+
+        ErrorLog ${APACHE_LOG_DIR}/potdigger-error.log
+
+        # Possible values include: debug, info, notice, warn, error, crit, alert, emerg.
+        LogLevel  warn
+        CustomLog ${APACHE_LOG_DIR}/potdigger-access.log combined
+&amp;lt;/VirtualHost&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;edit-june-30th-2011-for-fedora-red-hat-users&#34;&gt;[EDIT June 30th 2011] For Fedora / Red Hat users&lt;/h2&gt;
+
+&lt;p&gt;When logging in using the apache user on my Fedora box, I would get a &amp;#8220;This account is currently not available&amp;#8221; error. So here&amp;#8217;s what I did :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;[david@H20 ~]$ cd $HOME
+[david@H20 ~]$ pwd
+/home/david
+[david@H20 ~]$ ls -ld . workspace workspace/android workspace/android/intuitia workspace/android/intuitia/prototypes workspace/android/intuitia/prototypes/potdigger_backend workspace/android/intuitia/prototypes/potdigger_backend/trunk
+drwx------. 78 david david 4096 Jun 30 16:38 .
+drwx------   5 david david 4096 May  5 12:42 workspace
+drwxrwxr-x  23 david david 4096 Jun 27 05:43 workspace/android
+drwxrwxr-x   4 david david 4096 May 27 10:57 workspace/android/intuitia
+drwxrwxr-x  14 david david 4096 Jun 30 16:37 workspace/android/intuitia/prototypes
+drwxrwxr-x   4 david david 4096 Jun 30 16:37 workspace/android/intuitia/prototypes/potdigger_backend
+drwxrwxr-x  10 david david 4096 Jun 30 16:37 workspace/android/intuitia/prototypes/potdigger_backend/trunk
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;We can observe that &lt;code&gt;/home/david&lt;/code&gt; (&lt;code&gt;.&lt;/code&gt;) and &lt;code&gt;/home/david/workspace&lt;/code&gt; directories lacks the executable bit.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;[david@H20 ~]$ chmod a+x . workspace
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
   </channel>
 </rss>

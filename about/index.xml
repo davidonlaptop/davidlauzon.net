@@ -1,16 +1,25 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Encounters with the World Wild Web </title>
-    <link>http://localhost/about/</link>
+    <title>Abouts on Encounters with the World Wild Web</title>
+    <link>https://davidonlaptop.github.io/davidlauzon.net/about/</link>
+    <description>Recent content in Abouts on Encounters with the World Wild Web</description>
+    <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <author>David Lauzon</author>
-    <rights>(C) 2011</rights>
-    <updated>2011-06-25 04:11:09 &#43;0000 &#43;0000</updated>
-
+    <lastBuildDate>Sat, 25 Jun 2011 04:11:09 +0000</lastBuildDate>
+    <atom:link href="https://davidonlaptop.github.io/davidlauzon.net/about/index.xml" rel="self" type="application/rss+xml" />
     
+    <item>
+      <title>About David Lauzon</title>
+      <link>https://davidonlaptop.github.io/davidlauzon.net/about/</link>
+      <pubDate>Sat, 25 Jun 2011 04:11:09 +0000</pubDate>
       
-    
+      <guid>https://davidonlaptop.github.io/davidlauzon.net/about/</guid>
+      <description>&lt;p&gt;(english version coming soon&amp;#8230;)&lt;/p&gt;
 
+&lt;p&gt;Je suis un jeune leader dynamique possèdant 5 ans d&amp;#8217;expérience professionnelle en programmation. Étant a l&amp;#8217;aise avec le Bash, je développe principalement sous Linux mais je connais aussi bien MS Windows. Et bien que je sois spécialisé en Web 2.0 (Ruby/Rails, PHP, REST, Flash AS3, JavaScript/Ajax), je développe aussi des applications Desktop (QT C++, Java), mobiles (Android Java) et base de données SQL. Comme j&amp;#8217;aspire a devenir architecte, je focus sur ma polyvalence dans plusieurs domaines de l&amp;#8217;informatique. Ayant donc travaillé avec de nombreux APIs et langages (dont C++ et Java), je me familiarise rapidement et de façon autodidacte avec de nouveaux outils. Aussi, j&amp;#8217;ai suivi une formation Cisco de 200 heures qui me procure une compréhension d&amp;#8217;ensemble du fonctionnement des réseaux (TCP/IP, modèles OSI, client / serveur). J&amp;#8217;aimerais travailler dans une compagnie d&amp;#8217;importance où règne un bon esprit d&amp;#8217;équipe.&lt;/p&gt;
+</description>
+    </item>
+    
   </channel>
 </rss>

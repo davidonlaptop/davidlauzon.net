@@ -1,16 +1,27 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Encounters with the World Wild Web </title>
-    <link>http://localhost/projects/</link>
+    <title>Projects on Encounters with the World Wild Web</title>
+    <link>https://davidonlaptop.github.io/davidlauzon.net/projects/</link>
+    <description>Recent content in Projects on Encounters with the World Wild Web</description>
+    <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <author>David Lauzon</author>
-    <rights>(C) 2011</rights>
-    <updated>2011-06-25 09:44:24 &#43;0000 &#43;0000</updated>
-
+    <lastBuildDate>Sat, 25 Jun 2011 09:44:24 +0000</lastBuildDate>
+    <atom:link href="https://davidonlaptop.github.io/davidlauzon.net/projects/index.xml" rel="self" type="application/rss+xml" />
     
+    <item>
+      <title>Projects</title>
+      <link>https://davidonlaptop.github.io/davidlauzon.net/projects/</link>
+      <pubDate>Sat, 25 Jun 2011 09:44:24 +0000</pubDate>
       
-    
+      <guid>https://davidonlaptop.github.io/davidlauzon.net/projects/</guid>
+      <description>
 
+&lt;h3 id=&#34;open-source-projects&#34;&gt;Open Source Projects&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://code.google.com/p/assembla-timetracker/&#34;&gt;Android Time Tracker for Assembla API&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
   </channel>
 </rss>

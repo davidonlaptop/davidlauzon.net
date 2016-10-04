@@ -1,16 +1,23 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Encounters with the World Wild Web </title>
-    <link>http://localhost/portfolio/</link>
+    <title>Portfolios on Encounters with the World Wild Web</title>
+    <link>https://davidonlaptop.github.io/davidlauzon.net/portfolio/</link>
+    <description>Recent content in Portfolios on Encounters with the World Wild Web</description>
+    <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <author>David Lauzon</author>
-    <rights>(C) 2011</rights>
-    <updated>2011-06-26 10:10:39 &#43;0000 &#43;0000</updated>
-
+    <lastBuildDate>Sun, 26 Jun 2011 10:10:39 +0000</lastBuildDate>
+    <atom:link href="https://davidonlaptop.github.io/davidlauzon.net/portfolio/index.xml" rel="self" type="application/rss+xml" />
     
+    <item>
+      <title>Portfolio</title>
+      <link>https://davidonlaptop.github.io/davidlauzon.net/portfolio/</link>
+      <pubDate>Sun, 26 Jun 2011 10:10:39 +0000</pubDate>
       
+      <guid>https://davidonlaptop.github.io/davidlauzon.net/portfolio/</guid>
+      <description>&lt;p&gt;&lt;iframe src=&#34;https://davidonlaptop.github.io/davidlauzon.net/asset/portfolio/&#34; width=&#34;750&#34; height=&#34;630&#34; style=&#34;border:0px&#34; /&gt;&lt;/p&gt;
+</description>
+    </item>
     
-
   </channel>
 </rss>
