@@ -1,0 +1,1359 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Encounters with the World Wild Web</title>
+    <link>http://localhost/</link>
+    <description>Recent content on Encounters with the World Wild Web</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 27 Dec 2011 04:44:46 +0000</lastBuildDate>
+    <atom:link href="http://localhost/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Darky ROM with HOME button on T959D (Galaxy S Fascinate)</title>
+      <link>http://localhost/2011/12/darky-rom-with-home-button-t959d/</link>
+      <pubDate>Tue, 27 Dec 2011 04:44:46 +0000</pubDate>
+      
+      <guid>http://localhost/2011/12/darky-rom-with-home-button-t959d/</guid>
+      <description>
+
+&lt;p&gt;Hey! If you&amp;#8217;ve installed the Darky Rom 10.2 (or 10.3) on your T959D phone (Samsung Galaxy S Fascinate), and you are missing the HOME and SEARCH key here is how to get them working :&lt;/p&gt;
+
+&lt;h2 id=&#34;install-darky-rom-10-2&#34;&gt;Install Darky ROM 10.2&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Download the latest Odin 3  (I used Odin3 v1.85) *&lt;/li&gt;
+&lt;li&gt;Start Odin&lt;/li&gt;
+&lt;li&gt;Download &lt;a href=&#34;http://sourceforge.net/projects/ficeto.u/files/DarkyROM_10.2_Resurrection.zip/download&#34;&gt;DarkyROM_10.2_Resurrection.zip&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Extract the ZIP&lt;/li&gt;
+&lt;li&gt;Put the pit file in PIT&lt;/li&gt;
+&lt;li&gt;Tick repartition&lt;/li&gt;
+&lt;li&gt;Put PDA.tar it into PDA&lt;/li&gt;
+&lt;li&gt;Put phone in Download Mode (vol-down+home+pwr)&lt;/li&gt;
+&lt;li&gt;Connect through USB to your computer (make sure Kies is off)&lt;/li&gt;
+&lt;li&gt;Hit Start&lt;/li&gt;
+&lt;li&gt;Sit back and relax while your phone gets resurrected&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;ul&gt;
+&lt;li&gt;The provided Odin 1.3 didn&amp;#8217;t detected my phone, so I just used version 1.85&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;install-the-key-layout-patch&#34;&gt;Install the key layout patch&lt;/h2&gt;
+
+&lt;p&gt;But since this ROM is for the I9000 phone which has a hardware HOME button, you need to install a patch to fix the T959D&amp;#8217;s software buttons :&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Download the &lt;a href=&#34;http://forum.xda-developers.com/showthread.php?t=1252908&#34;&gt;&amp;#8220;Key Layout Update.zip&amp;#8221; from this page&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Connect your phone to your computer as a mass storage device&lt;/li&gt;
+&lt;li&gt;Copy the &amp;#8220;Key Layout Update.zip&amp;#8221; to your phone&amp;#8217;s sd card.&lt;/li&gt;
+&lt;li&gt;Reboot in recovery mode, by holding the power button and choosing the option &amp;#8220;Recovery&amp;#8221;.&lt;/li&gt;
+&lt;li&gt;&amp;#8220;Install zip from sdcard&amp;#8221;&lt;/li&gt;
+&lt;li&gt;&amp;#8220;Choose zip from sdcard&amp;#8221;&lt;/li&gt;
+&lt;li&gt;Select the zip&lt;/li&gt;
+&lt;li&gt;Yes, install it&lt;/li&gt;
+&lt;li&gt;Reboot and voila!&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;By the way, you can also use this patch with Darky ROM 10.3 but this ROM was waaaay too slow!&lt;/p&gt;
+
+&lt;h2 id=&#34;extra-the-band-frequencies&#34;&gt;Extra : the band frequencies&lt;/h2&gt;
+
+&lt;p&gt;If your using Telus Canada, you may need to add the band frequencies (otherwise Canadian bands will be disabled by default) :&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Open the Dialer app&lt;/li&gt;
+&lt;li&gt;Type *#*#197328640#*#*&lt;/li&gt;
+&lt;li&gt;Select &lt;a href=&#34;http://sourceforge.net/projects/ficeto.u/files/DarkyROM_10.2_Resurrection.zip/download&#34;&gt;1&lt;/a&gt; Debug Screen&lt;/li&gt;
+&lt;li&gt;Select [8] Phone control&lt;/li&gt;
+&lt;li&gt;Select [7] Network control&lt;/li&gt;
+&lt;li&gt;Select &lt;a href=&#34;http://forum.xda-developers.com/showthread.php?t=1252908&#34;&gt;2&lt;/a&gt; Band Selection&lt;/li&gt;
+&lt;li&gt;Select [4] Combi Bands []&lt;/li&gt;
+&lt;li&gt;Select all the bands&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Search within pdf files using grep</title>
+      <link>http://localhost/2011/11/greppdf/</link>
+      <pubDate>Sat, 26 Nov 2011 00:45:01 +0000</pubDate>
+      
+      <guid>http://localhost/2011/11/greppdf/</guid>
+      <description>&lt;p&gt;Put this code snippet into a script named greppdf into your path :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;#!/bin/bash
+
+for PDF in *.pdf
+do
+    NB_PAGES=`pdfinfo &amp;quot;$PDF&amp;quot; |grep &amp;quot;Pages&amp;quot; |cut -f 2 -d &amp;quot;:&amp;quot;`
+
+    for (( PAGE=1; PAGE&amp;lt;=$NB_PAGES; PAGE++ ))
+    do  
+        pdftotext &amp;quot;$PDF&amp;quot; -f $PAGE -l $PAGE - | grep -i $@ | while read line; do echo &amp;quot;$PDF:$PAGE:$line&amp;quot;; done
+    done
+done
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now you can search through a directory of pdf, using this command (you can use as well regular grep parameters) :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;greppdf &amp;quot;programming&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This will output the filename and slide number where the &amp;ldquo;programming&amp;rdquo; string is found.&lt;/p&gt;
+
+&lt;p&gt;Requirements: The package poppler-utils needs to be installed on your system.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Apache virtual host using a symlink to home directory</title>
+      <link>http://localhost/2011/06/apache-virtual-host-using-a-symlink-to-home-directory/</link>
+      <pubDate>Wed, 29 Jun 2011 23:11:36 +0000</pubDate>
+      
+      <guid>http://localhost/2011/06/apache-virtual-host-using-a-symlink-to-home-directory/</guid>
+      <description>
+
+&lt;h2 id=&#34;forbidden-you-don-8217-t-have-the-permission-to-access-on-this-server&#34;&gt;Forbidden : You don&amp;#8217;t have the permission to access / on this server.&lt;/h2&gt;
+
+&lt;p&gt;If you see this error message, then perhaps you&amp;#8217;re trying to use an Apache virtual host that&amp;#8217;s located somewhere in your home directory?&lt;/p&gt;
+
+&lt;p&gt;Well this could be because Apache doesn&amp;#8217;t have the permissions to traverse the directory, and this post explains how to fix it with complete config files.&lt;/p&gt;
+
+&lt;p&gt;In my case, my default apache document root is /var/www and I want to server &lt;code&gt;/var/www/potdigger&lt;/code&gt; which is a symlink to &lt;code&gt;/home/david/workspace/php/potdigger_backend&lt;/code&gt; .&lt;/p&gt;
+
+&lt;h2 id=&#34;find-out-what-user-the-apache-process-is-using&#34;&gt;Find out what user the Apache process is using&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;david@dragdroid:~$ ps auxf |grep apache
+david    23857  0.0  0.0   5304   856 pts/0    S+   18:00   0:00  |   \_ grep --color=auto apache
+root     23381  0.0  0.0   5652  2628 ?        Ss   17:25   0:00 /usr/sbin/apache2 -k start
+www-data 23384  0.0  0.0   5424  1816 ?        S    17:25   0:00  \_ /usr/sbin/apache2 -k start
+www-data 23386  0.0  0.0 227328  2820 ?        Sl   17:25   0:00  \_ /usr/sbin/apache2 -k start
+www-data 23387  0.0  0.0 227208  2624 ?        Sl   17:25   0:00  \_ /usr/sbin/apache2 -k start
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;In my case (Ubuntu), the user is &lt;code&gt;www-data&lt;/code&gt;. Note : Your process could be named httpd instead of apache.&lt;/p&gt;
+
+&lt;h2 id=&#34;login-with-this-user-to-see-which-directories-causes-problem&#34;&gt;Login with this user to see which directories causes problem.&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;david@dragdroid:~$ sudo -i -u www-data
+[sudo] password for david: 
+$ ls /var/www/ -l
+total 12
+-rw-r--r-- 1 root  root   177 2011-06-29 15:30 index.html
+lrwxrwxrwx 1 root  root    43 2011-06-29 16:13 potdigger -&amp;gt; /home/david/workspace/php/potdigger_backend
+$ cd potdigger
+cd: 2: can&#39;t cd to potdigger
+$ cd /home/david/workspace/php/potdigger_backend
+cd: 3: can&#39;t cd to /home/david/workspace/php/potdigger_backend
+$ cd /home/david/workspace/php
+cd: 5: can&#39;t cd to /home/david/workspace/php
+$ cd /home/david/workspace    
+cd: 6: can&#39;t cd to /home/david/workspace
+$ cd /home/david 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now we see that we can get to &lt;code&gt;/home/david&lt;/code&gt; without any problem. It&amp;#8217;s the &lt;code&gt;workspace/php/potdigger_backend&lt;/code&gt; path that it can&amp;#8217;t access.&lt;/p&gt;
+
+&lt;h2 id=&#34;set-the-executable-permission-on-these-directories&#34;&gt;Set the executable permission on these directories.&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;david@dragdroid:~$ pwd
+/home/david
+david@dragdroid:~$ chmod a+x workspace workspace/php workspace/php/potdigger_backend
+david@dragdroid:~$
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Open a new terminal window (so that you use your logon user) and type :&lt;/p&gt;
+
+&lt;h2 id=&#34;verify-that-it-works&#34;&gt;Verify that it works&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ cd /home/david/workspace/php/potdigger_backend
+$ pwd
+/home/david/workspace/php/potdigger_backend
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Use the first window (logged in as &lt;code&gt;www_data&lt;/code&gt;) and type :&lt;/p&gt;
+
+&lt;h2 id=&#34;reload-the-apache-configuration-and-boom&#34;&gt;Reload the apache configuration, and boom!&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;david@dragdroid:~$ sudo /etc/init.d/apache2 reload
+[sudo] password for david: 
+ * Reloading web server config apache2                                                                                                                                                                                                       apache2: Could not reliably determine the server&#39;s fully qualified domain name, using 127.0.1.1 for ServerName                                                                                                                                                                                                        [ OK ]
+david@dragdroid:~$
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Here&amp;#8217;s my vhost related config :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;NameVirtualHost *:80
+&amp;lt;VirtualHost *:80&amp;gt;
+        ServerName potdigger
+
+        DocumentRoot /var/www/potdigger
+        &amp;lt;Directory /var/www/potdigger&amp;gt;
+                Options Indexes FollowSymLinks MultiViews
+                AllowOverride All
+                Order allow,deny
+                allow from all
+        &amp;lt;/Directory&amp;gt;
+
+        ErrorLog ${APACHE_LOG_DIR}/potdigger-error.log
+
+        # Possible values include: debug, info, notice, warn, error, crit, alert, emerg.
+        LogLevel  warn
+        CustomLog ${APACHE_LOG_DIR}/potdigger-access.log combined
+&amp;lt;/VirtualHost&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;edit-june-30th-2011-for-fedora-red-hat-users&#34;&gt;[EDIT June 30th 2011] For Fedora / Red Hat users&lt;/h2&gt;
+
+&lt;p&gt;When logging in using the apache user on my Fedora box, I would get a &amp;#8220;This account is currently not available&amp;#8221; error. So here&amp;#8217;s what I did :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;[david@H20 ~]$ cd $HOME
+[david@H20 ~]$ pwd
+/home/david
+[david@H20 ~]$ ls -ld . workspace workspace/android workspace/android/intuitia workspace/android/intuitia/prototypes workspace/android/intuitia/prototypes/potdigger_backend workspace/android/intuitia/prototypes/potdigger_backend/trunk
+drwx------. 78 david david 4096 Jun 30 16:38 .
+drwx------   5 david david 4096 May  5 12:42 workspace
+drwxrwxr-x  23 david david 4096 Jun 27 05:43 workspace/android
+drwxrwxr-x   4 david david 4096 May 27 10:57 workspace/android/intuitia
+drwxrwxr-x  14 david david 4096 Jun 30 16:37 workspace/android/intuitia/prototypes
+drwxrwxr-x   4 david david 4096 Jun 30 16:37 workspace/android/intuitia/prototypes/potdigger_backend
+drwxrwxr-x  10 david david 4096 Jun 30 16:37 workspace/android/intuitia/prototypes/potdigger_backend/trunk
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;We can observe that &lt;code&gt;/home/david&lt;/code&gt; (&lt;code&gt;.&lt;/code&gt;) and &lt;code&gt;/home/david/workspace&lt;/code&gt; directories lacks the executable bit.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;[david@H20 ~]$ chmod a+x . workspace
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Portfolio</title>
+      <link>http://localhost/portfolio/</link>
+      <pubDate>Sun, 26 Jun 2011 10:10:39 +0000</pubDate>
+      
+      <guid>http://localhost/portfolio/</guid>
+      <description>&lt;p&gt;&lt;iframe src=&#34;http://localhost/asset/portfolio/&#34; width=&#34;750&#34; height=&#34;630&#34; style=&#34;border:0px&#34; /&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Howdy! Finally switched to WordPress!</title>
+      <link>http://localhost/2011/06/howdy-finally-switched-to-wordpress/</link>
+      <pubDate>Sun, 26 Jun 2011 00:09:13 +0000</pubDate>
+      
+      <guid>http://localhost/2011/06/howdy-finally-switched-to-wordpress/</guid>
+      <description>&lt;p&gt;I finally made it!&lt;/p&gt;
+
+&lt;p&gt;Special thanks to &lt;a tittle=&#34;Migrated to WordPress&#34; href=&#34;http://schwuk.com/articles/2008/02/21/migrated-to-wordpress/&#34;&gt;Dave Murphy&lt;/a&gt; and &lt;a href=&#34;http://blog.jacius.info/2009/11/04/migrated-from-mephisto-to-wordpress/&#34;&gt;Jacius&lt;/a&gt; for their instructions on migrating from Mephisto to WordPress.&lt;/p&gt;
+
+&lt;p&gt;Now, I&amp;#8217;ll be able to catchup with some articles!! Stay tuned!&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Projects</title>
+      <link>http://localhost/projects/</link>
+      <pubDate>Sat, 25 Jun 2011 09:44:24 +0000</pubDate>
+      
+      <guid>http://localhost/projects/</guid>
+      <description>
+
+&lt;h3 id=&#34;open-source-projects&#34;&gt;Open Source Projects&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://code.google.com/p/assembla-timetracker/&#34;&gt;Android Time Tracker for Assembla API&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>About David Lauzon</title>
+      <link>http://localhost/about/</link>
+      <pubDate>Sat, 25 Jun 2011 04:11:09 +0000</pubDate>
+      
+      <guid>http://localhost/about/</guid>
+      <description>&lt;p&gt;(english version coming soon&amp;#8230;)&lt;/p&gt;
+
+&lt;p&gt;Je suis un jeune leader dynamique possèdant 5 ans d&amp;#8217;expérience professionnelle en programmation. Étant a l&amp;#8217;aise avec le Bash, je développe principalement sous Linux mais je connais aussi bien MS Windows. Et bien que je sois spécialisé en Web 2.0 (Ruby/Rails, PHP, REST, Flash AS3, JavaScript/Ajax), je développe aussi des applications Desktop (QT C++, Java), mobiles (Android Java) et base de données SQL. Comme j&amp;#8217;aspire a devenir architecte, je focus sur ma polyvalence dans plusieurs domaines de l&amp;#8217;informatique. Ayant donc travaillé avec de nombreux APIs et langages (dont C++ et Java), je me familiarise rapidement et de façon autodidacte avec de nouveaux outils. Aussi, j&amp;#8217;ai suivi une formation Cisco de 200 heures qui me procure une compréhension d&amp;#8217;ensemble du fonctionnement des réseaux (TCP/IP, modèles OSI, client / serveur). J&amp;#8217;aimerais travailler dans une compagnie d&amp;#8217;importance où règne un bon esprit d&amp;#8217;équipe.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Utilisation de GoogleMaps en Java</title>
+      <link>http://localhost/2011/01/utilisation-de-googlemaps-en-java/</link>
+      <pubDate>Sun, 09 Jan 2011 14:30:53 +0000</pubDate>
+      
+      <guid>http://localhost/2011/01/utilisation-de-googlemaps-en-java/</guid>
+      <description>
+
+&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
+
+&lt;p&gt;Cet article s&amp;#8217;adresse aux développeurs cherchant intégrer un système cartographique dans leur application Java. Vous trouverez ci-bas les résultats de mes recherches effectués lors de mes charges de laboratoire du cours &lt;a href=&#34;https://cours.etsmtl.ca/log210/&#34;&gt;Analyse et Conception de Logiciel&lt;/a&gt; &lt;a href=&#34;http://www.etsmtl.ca/&#34;&gt;l&amp;#8217;École de Technologie Supérieure (ÉTS)&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;survol-des-possibilités-étudiées&#34;&gt;Survol des possibilités étudiées&lt;/h2&gt;
+
+&lt;p&gt;Voici un schéma qui résume les options possibles. La légende est la suivante : en vert les options faciles, en orange difficulté moyenne, en rouge non-recommandée, et en grisées les options non explorées lors de cette recherche.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://localhost/asset/2011/01/sommaire_gmap_options2.png&#34; title=&#34;sommaire_gmap_options2&#34; width=&#34;700&#34; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;détails&#34;&gt;Détails&lt;/h2&gt;
+
+&lt;p&gt;Voici un tableaux résumant les entrées et sorties pour chacune des méthodes :&lt;/p&gt;
+
+&lt;table width=&#34;100%&#34;&gt;
+  &lt;tr&gt;
+    &lt;th&gt;
+      Méthode
+    &lt;/th&gt;
+    &lt;th&gt;
+      Entrées
+    &lt;/th&gt;
+    &lt;th&gt;
+      Sorties
+    &lt;/th&gt;
+    &lt;th&gt;
+      Autres compétences requises
+    &lt;/th&gt;
+  &lt;/tr&gt;
+  
+  &lt;tr&gt;
+    &lt;td&gt;
+      SWT
+    &lt;/td&gt;
+    &lt;td&gt;
+      JavaScript ou URL
+    &lt;/td&gt;
+    &lt;td&gt;
+      HTML
+    &lt;/td&gt;
+    &lt;td&gt;
+    &lt;/td&gt;
+  &lt;/tr&gt;
+  
+  &lt;tr&gt;
+    &lt;td&gt;
+      DJ NativeSwing
+    &lt;/td&gt;
+    &lt;td&gt;
+      JavaScript ou URL
+    &lt;/td&gt;
+    &lt;td&gt;
+      HTML
+    &lt;/td&gt;
+    &lt;td&gt;
+    &lt;/td&gt;
+  &lt;/tr&gt;
+  
+  &lt;tr&gt;
+    &lt;td&gt;
+      QT Jambi
+    &lt;/td&gt;
+    &lt;td&gt;
+      JavaScript ou URL
+    &lt;/td&gt;
+    &lt;td&gt;
+      HTML
+    &lt;/td&gt;
+    &lt;td&gt;
+      QT
+    &lt;/td&gt;
+  &lt;/tr&gt;
+  
+  &lt;tr&gt;
+    &lt;td&gt;
+      Projet Web
+    &lt;/td&gt;
+    &lt;td&gt;
+      JavaScript ou URL
+    &lt;/td&gt;
+    &lt;td&gt;
+      HTML
+    &lt;/td&gt;
+    &lt;td&gt;
+      HTML, CSS, Programmation serveur (PHP,JSP,etc.)
+    &lt;/td&gt;
+  &lt;/tr&gt;
+  
+  &lt;tr&gt;
+    &lt;td&gt;
+      Static Maps API + KML
+    &lt;/td&gt;
+    &lt;td&gt;
+      KML
+    &lt;/td&gt;
+    &lt;td&gt;
+      Image
+    &lt;/td&gt;
+    &lt;td&gt;
+    &lt;/td&gt;
+  &lt;/tr&gt;
+  
+  &lt;tr&gt;
+    &lt;td&gt;
+      Static Maps API + HTTP
+    &lt;/td&gt;
+    &lt;td&gt;
+      String
+    &lt;/td&gt;
+    &lt;td&gt;
+      Image
+    &lt;/td&gt;
+    &lt;td&gt;
+      HTTP et (XML ou JSON)
+    &lt;/td&gt;
+  &lt;/tr&gt;
+  
+  &lt;tr&gt;
+    &lt;td&gt;
+      GWT
+    &lt;/td&gt;
+    &lt;td&gt;
+      String
+    &lt;/td&gt;
+    &lt;td&gt;
+      HTML
+    &lt;/td&gt;
+    &lt;td&gt;
+      Google Web Toolkit (GWT)
+    &lt;/td&gt;
+  &lt;/tr&gt;
+  
+  &lt;tr&gt;
+    &lt;td&gt;
+      Flash
+    &lt;/td&gt;
+    &lt;td&gt;
+      String
+    &lt;/td&gt;
+    &lt;td&gt;
+      Flash
+    &lt;/td&gt;
+    &lt;td&gt;
+      ActionScript (AS3)
+    &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+
+&lt;h3 id=&#34;navigateur-web-embarqué&#34;&gt;Navigateur web embarqué&lt;/h3&gt;
+
+&lt;p&gt;Dans cette solution, il s&amp;#8217;agit d&amp;#8217;utiliser un des différents contrôles Web existants et d&amp;#8217;incorporer carrément un navigateur web dans l&amp;#8217;application. Par la suite il suffit d&amp;#8217;utiliser JavaScript ou d&amp;#8217;envoyer les bons paramètres dans l&amp;#8217;URL pour afficher les directions.&lt;/p&gt;
+
+&lt;p&gt;Si j&amp;#8217;avais construire une application de bureau professionnelle, je choisirait le &lt;a href=&#34;http://code.google.com/apis/maps/documentation/flash/&#34;&gt;Maps API for Flash&lt;/a&gt; (via Adobe Air) si possible car la librairie est très stable ou j&amp;#8217;explorerais les possibilités avec le &lt;a href=&#34;http://www.google.com/mobile/maps/&#34;&gt;Google Maps for Mobile&lt;/a&gt; (&lt;a href=&#34;http://www.java.com/en/java_in_action/google_maps.jsp&#34;&gt;recommandé par Sun&lt;/a&gt;) ou la &lt;a href=&#34;http://worldwind.arc.nasa.gov/java/index.html&#34;&gt;NASA World Wind&lt;/a&gt; (&lt;a href=&#34;http://worldwind.arc.nasa.gov/java/demos/&#34;&gt;demos&lt;/a&gt;)&lt;/p&gt;
+
+&lt;h3 id=&#34;qt-jambi&#34;&gt;QT Jambi&lt;/h3&gt;
+
+&lt;p&gt;QT est une librairie graphique (&lt;em&gt;GUI framework&lt;/em&gt;) c++, open source et multiplateforme (windows, mac, linux, mobile), développée par Nokia. QT Jambi est un &amp;#8220;port&amp;#8221; de la librairie QT pour Java. Pas besoin de QT pour utiliser QT Jambi, il suffit de télécharger les &lt;a href=&#34;http://sourceforge.net/projects/qtjambi/files/4.5.2/&#34;&gt;bindings pour votre système&lt;/a&gt; et le &lt;a href=&#34;http://qt.nokia.com/developer/eclipse-integration&#34;&gt;QT Eclipse Integration for Jambi (Java) Plugin&lt;/a&gt;. Notez que pour l&amp;#8217;installation du plugin Eclipse sur Windows 64 bits, il faut télécharger les 2 fichiers mentionnés ci-haut en 32 bits.&lt;/p&gt;
+
+&lt;p&gt;Voir mon article précédent pour voir &lt;a href=&#34;http://localhost/2010/02/how-to-use-qt-jambi-from-within-eclipse/&#34; title=&#34;How to use QT Jambi from within Eclipse&#34;&gt;comment utiliser QT Jambi dans Eclipse&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;sortie-html&#34;&gt;Sortie HTML&lt;/h3&gt;
+
+&lt;p&gt;L&amp;#8217;avantage d&amp;#8217;avoir une sortie HTML est qu&amp;#8217;il est possible de ré-utiliser les widgets du site de Google Maps. Par contre, l&amp;#8217;intégration d&amp;#8217;un navigateur embarqué dans les applications de bureau (ie: traditionnelle) frôle le &lt;a href=&#34;http://code.google.com/apis/maps/faq.html#mapsformobile&#34;&gt;bris de la license de Google&lt;/a&gt;. Toutefois, cela est parfaitement légal pour la création d&amp;#8217;un site internet.&lt;/p&gt;
+
+&lt;h3 id=&#34;maps-data-api&#34;&gt;Maps Data API&lt;/h3&gt;
+
+&lt;p&gt;J&amp;#8217;ai perdu plusieurs heures infructueuses avec l&amp;#8217;API officielle de Google (&lt;a href=&#34;http://code.google.com/apis/maps/documentation/mapsdata/&#34;&gt;Maps Data API&lt;/a&gt;, maintenant désuète). Les exemples officiels requièrent l&amp;#8217;installation d&amp;#8217;un grand nombre de librairies mal documentées &amp;#8211; laissez-moi savoir si vous y arrivez. J&amp;#8217;ai alors cherché pour un autre exemple qui me semblait complet (dont j&amp;#8217;ai perdu l&amp;#8217;adresse), mais sa compilation provoquait une erreur de signature dans l&amp;#8217;appel d&amp;#8217;une des classes de l&amp;#8217;API.&lt;/p&gt;
+
+&lt;h3 id=&#34;point-de-départ-pour-la-solution-avec-microsoft&#34;&gt;Point de départ pour la solution avec Microsoft&lt;/h3&gt;
+
+&lt;p&gt;(&lt;a href=&#34;http://stackoverflow.com/questions/996954/java-api-for-google-maps-or-similar&#34;&gt;source&lt;/a&gt;) : Microsoft has a collaboration with USGS at &lt;a rel=&#34;nofollow&#34; href=&#34;http://terraserver-usa.com/&#34;&gt;&lt;a href=&#34;http://terraserver-usa.com/&#34;&gt;http://terraserver-usa.com/&lt;/a&gt;&lt;/a&gt;. There is a &lt;a rel=&#34;nofollow&#34; href=&#34;http://terraserver-usa.com/webservices.aspx&#34;&gt;freely available web service&lt;/a&gt; with a &lt;a rel=&#34;nofollow&#34; href=&#34;http://terraserver-usa.com/TerraService2.asmx&#34;&gt;WSDL&lt;/a&gt;. You can use common Java WSDL binding libraries like &lt;a rel=&#34;nofollow&#34; href=&#34;http://ws.apache.org/axis2/&#34;&gt;Axis&lt;/a&gt; or &lt;a rel=&#34;nofollow&#34; href=&#34;http://cxf.apache.org/&#34;&gt;CXF&lt;/a&gt; to create java object to access the service.&lt;/p&gt;
+
+&lt;h3 id=&#34;static-maps-api-http&#34;&gt;Static Maps API + HTTP&lt;/h3&gt;
+
+&lt;p&gt;Voici un extrait de code pour cette solution :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/**
+ * Copyright (c) 2010, Maxime Caumartin, David Martineau
+ * All rights reserved.
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are met:
+ *
+ *     * Redistributions of source code must retain the above copyright
+ *       notice, this list of conditions and the following disclaimer.
+ *     * Redistributions in binary form must reproduce the above copyright
+ *       notice, this list of conditions and the following disclaimer in the
+ *       documentation and/or other materials provided with the distribution.
+ *     * Neither the names of the developpers nor the
+ *       names of its contributors may be used to endorse or promote products
+ *       derived from this software without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE REGENTS AND CONTRIBUTORS ``AS IS&#39;&#39; AND ANY
+ * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+ * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+ * DISCLAIMED. IN NO EVENT SHALL THE REGENTS AND CONTRIBUTORS BE LIABLE FOR ANY
+ * DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+ * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+ * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+ * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+ * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ */
+package ca.etsmtl.log210.laboratoire1.GIS;
+import java.awt.Dimension;
+import java.awt.Image;
+import java.awt.Toolkit;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
+import java.net.URL;
+import java.net.URLConnection;
+import java.net.URLEncoder;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import utilities.json.JSONArray;
+import utilities.json.JSONException;
+import utilities.json.JSONObject;
+import utilities.json.JSONTokener;
+import utilities.polylineEncoder.PolylineEncoder;
+import utilities.polylineEncoder.Track;
+import utilities.polylineEncoder.Trackpoint;
+import ca.etsmtl.log210.laboratoire1.modele.GestionnaireGIS;
+public class GoogleMapProvider implements GestionnaireGIS {
+  private HashMap&amp;lt;String, String&amp;gt; chose = new LinkedHashMap&amp;lt;String, String&amp;gt;();
+  private HashMap&amp;lt;String, String&amp;gt; autreChose = new HashMap&amp;lt;String, String&amp;gt;();
+  private Dimension dimmensionCarte;
+  private URL polyencodedMap;
+  // [...]
+  @Override
+  public Image getImage() throws IOException, InvalidLocalisationException {
+    StringBuffer b = new StringBuffer(50);
+    Image img;
+    for (String s : chose.keySet())
+      b.append(s).append(&#39;\n&#39;);
+    if ((img = cache.get(b.toString())) == null)
+    {
+    JSONTokener token = null;
+    URL u;
+    URLConnection c;
+    try
+    {
+      Track t = new Track();
+      for(int i = 0; i &amp;lt; getLieux().length-1; i++){
+        u = new URL(&amp;quot;http://maps.google.com/maps/nav?q=from:&amp;quot;+URLEncoder.encode(getLieux()[i], &amp;quot;UTF-8&amp;quot;)+&amp;quot;%20to:&amp;quot;+URLEncoder.encode(getLieux()[i+1], &amp;quot;UTF-8&amp;quot;));
+        c = u.openConnection();
+        // Je suis un navigateur web et mon nom est Firefox 3.6
+        c.setRequestProperty(&amp;quot;User-Agent&amp;quot;, &amp;quot;Mozilla/5.0 (X11; U; Linux x86_64; en-US; rv:1.9.2) Gecko/20100122 Fedora/3.6.1-1.fc13 Firefox/3.6&amp;quot;);
+        c.setRequestProperty(&amp;quot;Accept&amp;quot;, &amp;quot;text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8&amp;quot;);
+        c.setRequestProperty(&amp;quot;Accept-Language&amp;quot;, &amp;quot;fr-ca,en;q=0.5&amp;quot;);
+        InputStreamReader ob = new InputStreamReader (c.getInputStream());
+        token = new JSONTokener(ob);
+        JSONObject o = new JSONObject(token);
+        // Dans le protocole HTTP, 200 signifie que notre requete a ete executee avec succes
+        if (o.getJSONObject(&amp;quot;Status&amp;quot;).getInt(&amp;quot;code&amp;quot;) != 200)
+          throw new InvalidLocalisationException();
+        JSONArray arrDep = o.getJSONArray(&amp;quot;Placemark&amp;quot;);
+        JSONObject o1 = (JSONObject) arrDep.get(0);
+        t.addTrackpoint(getTractPointFromJSON(o1));
+        JSONArray dir = o.getJSONObject(&amp;quot;Directions&amp;quot;).getJSONArray(&amp;quot;Routes&amp;quot;)
+          .getJSONObject(0).getJSONArray(&amp;quot;Steps&amp;quot;);
+        for (int j = 0 ; j &amp;lt; dir.length(); j++)
+          t.addTrackpoint(getTractPointFromJSON((JSONObject)dir.get(j)));
+        t.addTrackpoint(getTractPointFromJSON((JSONObject)arrDep.get(1)));
+      }
+      HashMap&amp;lt;?, ?&amp;gt; hm = PolylineEncoder.createEncodings(t, 10, 1);
+      polyencodedMap = new URL(generatePolyencodedMapURL(hm));
+    }
+    catch (JSONException e)
+    {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
+      img = Toolkit.getDefaultToolkit().createImage(polyencodedMap);
+      cache.put(b.toString(), img);
+    }
+    return  img;
+  }
+  public String generatePolyencodedMapURL(HashMap&amp;lt;?, ?&amp;gt; hm) throws UnsupportedEncodingException{
+    String polyEncURL;
+    //&amp;quot;http://maps.google.com/maps/api/staticmap?sensor=false&amp;amp;size=800x800&amp;amp;markers=color:blue                     |label:D|H3C+1K3          &amp;amp;markers=color:blue                    |label:F|&amp;lt;Destination!&amp;gt;                     &amp;amp;maptype=roadmap&amp;amp;format=png32&amp;amp;path=weight:5                     |color:blue                  |enc&amp;quot;+hm.keySet().iterator().next().toString()
+    polyEncURL = &amp;quot;http://maps.google.com/maps/api/staticmap?sensor=false&amp;amp;size=1280x1024&amp;amp;&amp;quot;+generatePolylineMarkers()+&amp;quot;maptype=roadmap&amp;amp;format=png32&amp;amp;path=weight:&amp;quot;+getLargeurChemin()+&amp;quot;|color:&amp;quot;+getCouleurChemin()+&amp;quot;|enc:&amp;quot; + hm.values().iterator().next().toString();
+    return polyEncURL;
+  }
+  public String generatePolylineMarkers() throws UnsupportedEncodingException{
+    String polyMarkers = &amp;quot;&amp;quot;;
+    for(int i = 0; i &amp;lt; getLieux().length; i++){
+      polyMarkers = polyMarkers + &amp;quot;markers=color:&amp;quot;+getCouleurMarqueur()+&amp;quot;|label:&amp;quot;+this.chose.get(getLieux()[i])+&amp;quot;|&amp;quot;+URLEncoder.encode(getLieux()[i], &amp;quot;UTF-8&amp;quot;)+&amp;quot;&amp;amp;#038;&amp;quot;;
+    }
+    return polyMarkers;
+  }
+  private static Trackpoint getTractPointFromJSON(JSONObject o1) throws JSONException
+  {
+    JSONObject o2 = o1.getJSONObject(&amp;quot;Point&amp;quot;);
+    JSONArray coor1 = o2.getJSONArray(&amp;quot;coordinates&amp;quot;);
+    return new Trackpoint(coor1.getDouble(1), coor1.getDouble(0), coor1.getDouble(2));
+  }
+  @Override
+  public String[] getLieux() {
+    int i = 0;
+    String [] tmpStringArray = new String[chose.keySet().size()];
+    for (String s : chose.keySet())
+      tmpStringArray[i++] = s;
+    return tmpStringArray;
+  }
+  // [...]
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;références&#34;&gt;Références&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://mapki.com/wiki/Google_Map_Parameters&#34;&gt;Google Maps Parameters (quoi passer dans l&amp;#8217;URL)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://code.google.com/apis/maps/documentation/javascript/&#34;&gt;Google Maps JavaScript API v3&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://code.google.com/apis/maps/documentation/directions/&#34;&gt;Google Directions API&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://code.google.com/apis/maps/documentation/staticmaps/&#34;&gt;Google Static Maps API V2&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://code.google.com/apis/maps/documentation/webservices/&#34;&gt;Google Maps API Web Services&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://code.google.com/apis/maps/documentation/geocoding/&#34;&gt;Service de conversion d&amp;#8217;une adresse en KML&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.eclipse.org/swt/snippets/&#34;&gt;SWT Code Snippets&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://doc.qt.nokia.com/qtjambi-4.5.2_01/com/trolltech/qt/qtjambi-index.html&#34;&gt;QT Jambi 4.5.2 Reference Documentation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://doc.qt.nokia.com/qtjambi-4.5.2_01/index.html&#34;&gt;QT Jambi 4.5.2 API&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://doc.qt.nokia.com/4.7/index.html&#34;&gt;QT 4.7.1 Reference Documentation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://doc.qt.nokia.com/4.7/classes.html&#34;&gt;QT 4.7.1 API&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://claudiushauptmann.com/tutorial-google-maps-with-java-gwt-and-eclipse.html&#34;&gt;Tutorial: Google Maps with Java, GWT and Eclipse&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://djproject.sourceforge.net/ns/&#34;&gt;DJ NativeSwing&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://code.google.com/apis/maps/documentation/flash/&#34;&gt;Google Maps API for Flash&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.google.com/mobile/maps/&#34;&gt;Google Maps for Mobile&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://worldwind.arc.nasa.gov/java/index.html&#34;&gt;NASA World Wind&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://developer.mapquest.com/&#34;&gt;MapQuest Developer Network&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.microsoft.com/maps/developers/web.aspx&#34;&gt;Microsoft Bing Maps Developer Resources&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;crédits&#34;&gt;Crédits&lt;/h2&gt;
+
+&lt;p&gt;Merci à Maxime de Caumartin pour la contribution de son code Java pour le GoogleMapProvider, et aux autres étudiants pour leurs contributions.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Use svn with Eclipse Galileo on Ubuntu 9.10</title>
+      <link>http://localhost/2010/02/use-svn-with-eclipse-galileo-on-ubuntu-9-10/</link>
+      <pubDate>Sat, 27 Feb 2010 14:25:25 +0000</pubDate>
+      
+      <guid>http://localhost/2010/02/use-svn-with-eclipse-galileo-on-ubuntu-9-10/</guid>
+      <description>&lt;p&gt;After wasting a lot of time myself, I thought this could serve some other people&amp;#8230;&lt;/p&gt;
+
+&lt;p&gt;So here&amp;#8217;s how I did it :&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;First install the Subclipse plugin
+
+&lt;ol&gt;
+&lt;li&gt;Run sudo eclipse (that will install plugins system-wide)&lt;/li&gt;
+&lt;li&gt;Eclipse &amp;gt; Install new software &amp;gt; Add&lt;/li&gt;
+&lt;li&gt;Name = &amp;#8220;whatever&amp;#8221;&lt;/li&gt;
+&lt;li&gt;Location = &lt;strong&gt;&lt;a href=&#34;http://subclipse.tigris.org/update_1.6.x&#34;&gt;http://subclipse.tigris.org/update_1.6.x&lt;/a&gt;&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;OK&lt;/li&gt;
+&lt;li&gt;Work with: &amp;#8220;whatever&amp;#8221;&lt;/li&gt;
+&lt;li&gt;Select these to install :
+
+&lt;ul&gt;
+&lt;li&gt;CollabNet Merge Client&lt;/li&gt;
+&lt;li&gt;Subclipse&lt;/li&gt;
+&lt;li&gt;Subclipse Integration for Mylyn 3.x&lt;/li&gt;
+&lt;li&gt;Subversion Client Adapter&lt;/li&gt;
+&lt;li&gt;Subversion JavaHL Native Library Adapter&lt;/li&gt;
+&lt;li&gt;Subversion Revision Graph&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;If you get a &amp;#8220;Subversion 1.6 contains a bug that causes Eclipse to crash &amp;#8230;. GNOME keyring &amp;#8230; we recommand &amp;#8230; &amp;#8220;, choose OK.&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Next install the Java bindings for SVN&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;sudo apt-get install libsvn-java&lt;/li&gt;
+&lt;li&gt;Eclipse &amp;gt; Window &amp;gt; Preferences &amp;gt; Team &amp;gt; SVN&lt;/li&gt;
+&lt;li&gt;If that triggers a &amp;#8220;Failed to load JavaHL Library.&amp;#8221; error, you need to add libsvnjavahl-1 in the Eclipse path :&lt;/li&gt;
+&lt;li&gt;Just throw a symlink into one of the path in the error message :&lt;/li&gt;
+
+&lt;li&gt;&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;sudo ln -s /usr/lib/jni/libsvnjavahl-1.so /usr/lib/libsvnjavahl-1.so
+         sudo ln -s /usr/lib/jni/libsvnjavahl-1.so.0.0.0 /usr/lib/libsvnjavahl-1.so.0.0.0
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Restart eclipse and step 3 should be solved.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Perhaps you want to use SVN with existing checkout project ?&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Right-click on your project in Eclipse&lt;/li&gt;
+&lt;li&gt;Team &amp;gt; Share Project &amp;gt; svn &amp;gt; Validate Conneciton on Finish &amp;gt; Finish&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://subclipse.tigris.org/servlets/ProjectProcess?pageID=rr1TIx&#34;&gt;Screenshots of what you can do with Subclipse&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>How to use QT Jambi from within Eclipse</title>
+      <link>http://localhost/2010/02/how-to-use-qt-jambi-from-within-eclipse/</link>
+      <pubDate>Sun, 21 Feb 2010 14:16:46 +0000</pubDate>
+      
+      <guid>http://localhost/2010/02/how-to-use-qt-jambi-from-within-eclipse/</guid>
+      <description>
+
+&lt;p&gt;This article is part 2 / 2 of using QT Jambi within Eclipse. &lt;a href=&#34;http://localhost/2010/01/getting-started-with-qt-jambi-on-linux/&#34; title=&#34;Getting started with QT Jambi on Linux&#34;&gt;Click here to read the first part of this article, &amp;#8220;Getting started with QT Jambi on Linux&amp;#8221;&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;The present article you will learn how to design forms within eclipse and structure your QT code using the MVC pattern :&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;File &amp;gt; New &amp;gt; Other &amp;gt; Qt Jambi Project (Using Designer Form) &lt;img src=&#34;http://localhost/asset/2010/2/21/jambi_new_project.jpg&#34; alt=&#34;&#34; width=&#34;421&#34; height=&#34;300&#34; /&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Name it JambiWeb&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Add a new QT Jambi Designer Form and ajust settings like on screenshot. &lt;img src=&#34;http://localhost/asset/2010/2/21/jambi_new_template_class.jpg&#34; alt=&#34;&#34; width=&#34;421&#34; height=&#34;371&#34; /&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;This will create 3 files :&lt;/p&gt;
+
+&lt;p&gt;|File|Description|
+|&amp;ndash;|&amp;ndash;|
+| &lt;code&gt;src/views/WebView.jui&lt;/code&gt; | XML used by the Designer |
+| &lt;code&gt;src/views/WebView.java&lt;/code&gt; | This is the view from the MVC concept, it displays the widgets contained in &lt;code&gt;Ui_WebView.java&lt;/code&gt; |
+| &lt;code&gt;src/ui/views/Ui_WebView.java&lt;/code&gt; | Java file generated from the XML (you should not edit this file because it will be automatically replaced when you make changes to the form in the Designer). This file is more like a container for the widgets in the form, it does &lt;em&gt;not&lt;/em&gt; displays the elements. |&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Now in order to respect the MVC pattern, the view should not display itself, but rather we should have a controller to trigger the display of the view. Add WebController class in the controllers package and insert this code :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;package controllers;
+    
+import views.WebView;
+import com.trolltech.qt.gui.QApplication;
+
+public class WebController {
+private WebView webView;
+
+private Ui_WebView ui() { return webView.ui(); }
+
+public static void main(String[] args) {
+new WebController(args);
+}
+
+public WebController(String[] args) {
+QApplication.initialize(args);
+
+webView = new WebView(null);
+webView.show();
+
+initEvents();
+
+QApplication.exec();
+}
+
+private void initEvents() {
+}
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Now delete the main() method in &lt;code&gt;views/WebView.java&lt;/code&gt;, and the contents should be as follow:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;package views;&amp;amp;nbsp;
+
+import com.trolltech.qt.gui.*;
+
+public class WebView extends QMainWindow {
+private Ui_WebView ui = new Ui_WebView();
+
+public Ui_WebView ui() { return this.ui; }
+
+public WebView(QWidget parent) {
+super(parent);
+ui.setupUi(this);
+
+setWindowTitle(&amp;quot;A custom browser for your application&amp;quot;);
+}
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Next let&amp;#8217;s design our interface&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Open on views/WebView.jui and choose the &amp;#8220;QT Designer UI Perspective&amp;#8221;. This perspective should bring you a 3-tabbed panel on the right side of Eclipse view.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;So choose &amp;#8220;QT Object Inspector&amp;#8221; tab and right click on your QMainWindow item and choose &amp;#8220;add toolbar&amp;#8221;. &lt;img src=&#34;http://localhost/asset/2010/2/21/jambi_add_toolbar.jpg&#34; alt=&#34;&#34; width=&#34;1008&#34; height=&#34;630&#34; /&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;At the bottom of the screen, choose the &amp;#8220;QT Action Editor&amp;#8221; tab, and 2 actions (Reload, Stop), and drag &amp;amp; drop them unto the toolbar you are designing.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Next choose &amp;#8220;QT Widget Box&amp;#8221; tab.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Add a QWebView widget and name it &amp;#8220;browser&amp;#8221; (using QT Object Inspector tab)&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Add a QLineEdit widget anywhere in the window &amp;#8211; we&amp;#8217;ll add it to the toolbar manually.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Your view should be looking like this : &lt;img src=&#34;http://localhost/asset/2010/2/21/jambi_add_action_to_toolbar.jpg&#34; alt=&#34;&#34; width=&#34;1008&#34; height=&#34;630&#34; /&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Save &lt;code&gt;WebView.jui&lt;/code&gt; and go back to the Java perspective to add these lines to &lt;code&gt;views/WebView.java&lt;/code&gt; :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public WebView(QWidget parent) {
+    // ...
+    ui.toolBar.addWidget( ui.urlEdit );
+    ui.toolBar.setFloatable(false);
+    ui.toolBar.setMovable(false);
+}
+
+public Signal0 closed = new Signal0();
+
+@Override
+protected void closeEvent(QCloseEvent event) {
+    this.closed.emit();
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;And let&amp;#8217;s add code to handle the events in &lt;code&gt;controllers/WebController.java&lt;/code&gt; :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;private void initEvents() {
+    ui().actionReload.triggered.connect(this, &amp;quot;onReloadClicked()&amp;quot;);
+    ui().actionStop.triggered.connect(this, &amp;quot;onStopClicked()&amp;quot;);
+
+    ui().urlEdit.returnPressed.connect(this, &amp;quot;onUrlEditReturnPressed()&amp;quot;);
+
+    ui().browser.loadStarted.connect(this, &amp;quot;onLoadStarted()&amp;quot;);
+    ui().browser.loadProgress.connect(this, &amp;quot;onLoadProgress(int)&amp;quot;);
+    ui().browser.loadFinished.connect(this, &amp;quot;onLoadDone()&amp;quot;);
+    ui().browser.urlChanged.connect(this, &amp;quot;onUrlChanged(QUrl)&amp;quot;);
+
+    webView.closed.connect(this, &amp;quot;onClosed()&amp;quot;);
+}
+
+private void openURL() {
+    String text = ui().urlEdit.text();
+
+    if (text.indexOf(&amp;quot;://&amp;quot;) &amp;amp;lt; 0)
+    text = &amp;quot;http://&amp;quot; + text;
+
+    ui().browser.load(new QUrl(text));
+}
+
+private void onReloadClicked() {
+    ui().browser.reload();
+}
+
+private void onStopClicked() {
+    ui().browser.stop();
+}
+
+private void onUrlEditReturnPressed() {
+    openURL();
+}
+
+private void onUrlChanged(QUrl url) {
+    ui().urlEdit.setText(url.toString());
+}
+
+private void onLoadStarted() {
+    ui().statusbar.showMessage(&amp;quot;Starting to load: &amp;quot; + ui().urlEdit.text());
+}
+
+private void onLoadDone() {
+    ui().statusbar.showMessage(&amp;quot;Loading done...&amp;quot;);
+}
+
+private void onLoadProgress(int x) {
+    ui().statusbar.showMessage(&amp;quot;Loading: &amp;quot; + x + &amp;quot; %&amp;quot;);
+}
+
+private void onClosed() {
+    ui().browser.loadProgress.disconnect(this);
+    ui().browser.loadFinished.disconnect(this);
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;In the code above you have an exemple of a custom signal (QT&amp;#8217;s observer/observable pattern). Here is how it works : when &lt;code&gt;QMainWindow::closeEvent()&lt;/code&gt; is triggered by QT when the user closes the app, we then delegates the information to the WebController via the signal &lt;code&gt;WebView::closed&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;. For more details refer to &lt;a href=&#34;http://qt.nokia.com/doc/qtjambi-4.5.2_01/com/trolltech/qt/qtjambi-signalsandslots.html&#34;&gt;QT Jambi article on signals &amp;amp; slots&lt;/a&gt;.&lt;/li&gt; &lt;/ol&gt;&lt;/p&gt;
+
+&lt;p&gt;But wait a minute! Cool application use icons not text in the toolbar! Yes you can!&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Download these two images ( &lt;img style=&#34;width:32px&#34; src=&#34;http://localhost/asset/2010/2/21/refresh32.png&#34; /&gt;, &lt;img style=&#34;width:32px&#34; src=&#34;http://localhost/asset/2010/2/21/stop32.png&#34; /&gt;) and save them in a directory named &amp;#8220;images&amp;#8221; in your eclipse project.&lt;/li&gt;
+&lt;li&gt;Next add your images directory in your classpath: Project &amp;gt; Properties &amp;gt; Java Build Path &amp;gt; Librairies &amp;gt; Add Class Folder = &amp;#8220;images&amp;#8221;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Add set the icon manually in views/WebView.java :&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Read on the &lt;a href=&#34;http://qt.nokia.com/doc/qtjambi-4.5.2_01/com/trolltech/qt/qtjambi-resourcesystemoverview.html&#34;&gt;QT Resource system&lt;/a&gt; to understand how this works.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Here you go! I hope this article will be usefull to someone!&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;source-code&#34;&gt;Source code&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://localhost/asset/2010/2/21/JambiWeb.zip&#34;&gt;final source code for this application&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;credits&#34;&gt;Credits&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://qt.nokia.com/doc/qtjambi-4.5.2_01/com/trolltech/qt/qtjambi-hellowebkit-code.html&#34;&gt;http://qt.nokia.com/doc/qtjambi-4.5.2_01/com/trolltech/qt/qtjambi-hellowebkit-code.html&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://qt.nokia.com/doc/qtjambi-4.5.2_01/com/trolltech/qt/qtjambi-resourcesystem.html&#34;&gt;http://qt.nokia.com/doc/qtjambi-4.5.2_01/com/trolltech/qt/qtjambi-resourcesystem.html&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Getting started with QT Jambi on Linux</title>
+      <link>http://localhost/2010/01/getting-started-with-qt-jambi-on-linux/</link>
+      <pubDate>Thu, 21 Jan 2010 14:04:09 +0000</pubDate>
+      
+      <guid>http://localhost/2010/01/getting-started-with-qt-jambi-on-linux/</guid>
+      <description>
+
+&lt;p&gt;In this article I&amp;#8217;ll explain how to install QT Jambi and write your first Hello world program.&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Installation of QT Jambi SDK&lt;/li&gt;
+&lt;li&gt;Quick Overview of the SDK&lt;/li&gt;
+&lt;li&gt;Integration with Eclipse&lt;/li&gt;
+&lt;li&gt;Your first Jambi Program&lt;/li&gt;
+&lt;li&gt;Jambi Links&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;installation-of-qt-jambi-sdk&#34;&gt;Installation of QT Jambi SDK&lt;/h2&gt;
+
+&lt;p&gt;First, you need to download the &amp;#8220;Qt Jambi &amp;#8211; Java bindings Binaries&amp;#8221; for your OS (about 100MB), get it from� &lt;a href=&#34;http://qt.nokia.com/downloads&#34;&gt;here&lt;/a&gt;. Since I am using Ubuntu, the following instructions will be for Linux. You can extract the archive where you want, but remember the path because we&amp;#8217;ll need it later on &amp;#8211; I&amp;#8217;ll refer to ita s JAMBI_PATH (/usr/local/lib/qtjambi-linux32-lgpl-4.5.2_01 in this example).&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;tar -xzf qtjambi-linux32-lgpl-4.5.2_01.tar.gz
+sudo mv qtjambi-linux32-lgpl-4.5.2_01 /usr/local/lib/
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Next we need to create a script to get QT Designer to generate .jui files for Java (instead QT/C++ .ui files). Name it jambi-designer.sh and insert the following code:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;cd JAMBI_PATH
+export CLASSPATH=`pwd`/qtjambi-4.5.2_01.jar:`pwd`/qtjambi-examples-4.5.2_01.jar:`pwd`/qtjambi-linux32-gcc-4.5.2_01.jar
+export JAVADIR=/usr/lib/jvm/java-6-sun/jre
+./designer.sh
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Make it executable and make it available in your path. Copy also the juic (jambi user interface compiler) which is used to convert the files generated by the Designer to java code.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;sudo chmod a+x jambi-designer.sh
+sudo ln -s /JAMBI_PATH/jambi-designer.sh  /usr/local/bin/jambi-designer
+cp bin/juic /usr/local/bin/
+# try it :
+jambi-designer  &amp;amp;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;quick-overview-of-the-sdk&#34;&gt;Quick Overview of the SDK&lt;/h2&gt;
+
+&lt;p&gt;So here you go you got the SDK installed. Now what are these files, do i need to install this huge file on every computer my program will run unto?? Obviously not!&lt;/p&gt;
+
+&lt;p&gt;Well here, you to remember that when you&amp;#8217;ll distribute your application, you&amp;#8217;ll need to bundle it with the Jambi core package (qtjambi-4.5.2_01.jar) and the jambi os-dependant package (qtjambi-linux32-gcc-4.5.2_01.jar). That&amp;#8217;s it!&lt;/p&gt;
+
+&lt;p&gt;If you want the application to run on Windows as well, you only need to add one jar file per os (you&amp;#8217;ll need to download the whole sdk just to get the .jar your need for each os).&lt;/p&gt;
+
+&lt;p&gt;What else am I getting?&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;tr&gt;
+    &lt;th&gt;
+      Directory / file
+    &lt;/th&gt;
+    &lt;th&gt;
+      Details
+    &lt;/th&gt;
+  &lt;/tr&gt;
+  
+  &lt;tr&gt;
+    &lt;td&gt;
+      bin
+    &lt;/td&gt;
+    &lt;td&gt;
+      Designer and UI Compiler binaries
+    &lt;/td&gt;
+  &lt;/tr&gt;
+  
+  &lt;tr&gt;
+    &lt;td&gt;
+      com/trolltech/
+    &lt;/td&gt;
+    &lt;td&gt;
+      Jambi Core &amp; Examples Source code
+    &lt;/td&gt;
+  &lt;/tr&gt;
+  
+  &lt;tr&gt;
+    &lt;td&gt;
+      doc/
+    &lt;/td&gt;
+    &lt;td&gt;
+      Jambi HTML Documentation (use your browser)
+    &lt;/td&gt;
+  &lt;/tr&gt;
+  
+  &lt;tr&gt;
+    &lt;td&gt;
+      qtjambi.sh
+    &lt;/td&gt;
+    &lt;td&gt;
+      Execute this script to view the numeros code samples
+    &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://localhost/asset/2010/2/21/jambi_examples.jpg&#34; alt=&#34;&#34; width=&#34;442&#34; height=&#34;354&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+
+&lt;h2 id=&#34;integration-with-eclipse&#34;&gt;Integration with Eclipse&lt;/h2&gt;
+
+&lt;p&gt;So you want code auto-completion for Jambi classes in Eclipse? You&amp;#8217;re dreaming! Nope, actually you can! Just download the &amp;#8220;eclipse integration package&amp;#8221; and extract it in the plugin directory of your Eclipse installation.&lt;/p&gt;
+
+&lt;p&gt;Note : I haven&amp;#8217;t been able to install the integration plugin with default Eclipse package in Kubuntu 9.10 because it does not allow you to add plugins as root. So to get around this, just uninstall it from the package manager and install it manually (get &lt;a href=&#34;http://www.eclipse.org/downloads/&#34;&gt;eclipse here&lt;/a&gt;).&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;tar -xzf eclipse-java-galileo-SR1-linux-gtk.tar.gz
+sudo mv eclipse /opt/eclipse-3.5.1
+cd /opt/eclipse-3.5.1
+sudo tar -xzf /path/to/qtjambi-eclipse-integration-linux32-4.5.2_01.tar.gz
+./eclipse -clean
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Next on Eclipse restart, go to Window &amp;gt; Preferences &amp;gt; QT Jambi Preference Page and use these settings :&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Jambi Location = where you installed the first archive (JAMBI_PATH)&lt;/li&gt;
+&lt;li&gt;Generate files in separate folder = src/ui&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;your-first-jambi-program&#34;&gt;Your first Jambi Program&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Click on File &amp;gt; New &amp;gt; Other &amp;gt; QT Jambi Project.&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Add a new class named &amp;#8220;HelloWorld&amp;#8221; and insert this code:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;import com.trolltech.qt.gui.*;
+
+public class HelloWorld extends QWidget{
+
+    public static void main(String[] args) {
+        // Instanciates a Jambi Application and pass it the command-line arguments to allow the QApplication
+        // static instance to handle the arguments it recognizes, such as -font and -style.
+        QApplication.initialize(args);
+
+        // Creates an instance of our QWidget (could be also a QMainWindow, QDialog, etc.)
+        // and set the parent to null
+        HelloWorld helloWorld = new HelloWorld(null);
+
+        // Create a new label and sets its parent to our view.
+        QLabel label = new QLabel(&amp;quot;Ping World!&amp;quot;, helloWorld);
+
+        // Show our view
+        helloWorld.show();
+
+        // Execute Jambi Application
+        QApplication.exec();
+    }
+
+    public HelloWorld(QWidget parent){
+        super(parent);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;jambi-links&#34;&gt;Jambi Links&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://qt.nokia.com/doc/qtjambi-4.5.2_01/com/trolltech/qt/qtjambi-index.html&#34;&gt;Jambi Documentation&lt;/a&gt; (&amp;#8220;Signals and Slots&amp;#8221; is a recommanded reading)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://qt.nokia.com/doc/qtjambi-4.5.2_01/index.html&#34;&gt;Jambi Classes javadoc&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;file:///usr/local/lib/qtjambi-linux32-lgpl-4.5.2_01/doc/html/index.html&#34;&gt;file:///usr/local/lib/qtjambi-linux32-lgpl-4.5.2_01/doc/html/index.html&lt;/a&gt; (same as above but on your computer)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://doc.trolltech.com/4.5/index.html&#34;&gt;C++ QT Documentation&lt;/a&gt; (the API is the same and sometimes you find more information than on Jambi)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.informit.com/articles/article.aspx?p=1405564&#34;&gt;Getting Started Article by Jasmin Blanchette&lt;/a&gt; (including a part on how to integrate C++ components with QT Jambi)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://qt.nokia.com/doc/qtjambi-4.5.2_01/com/trolltech/qt/qtjambi-examples.html&#34;&gt;Jambi Examples&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>MS SQL Server 2008 with PHP</title>
+      <link>http://localhost/2009/02/ms-sql-server-2008-with-php/</link>
+      <pubDate>Wed, 18 Feb 2009 13:59:49 +0000</pubDate>
+      
+      <guid>http://localhost/2009/02/ms-sql-server-2008-with-php/</guid>
+      <description>
+
+&lt;p&gt;I personally choose not to use Micro$oft products when it is possible, but sometimes the choice is not given. For these unfortunate who have to deal with SQL Server 2008 (or 2005), here is how to get around without too many swear words and avoid licensing costs.&lt;/p&gt;
+
+&lt;h2 id=&#34;requirements&#34;&gt;Requirements&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Windows Vista (Win XP should do also)&lt;/li&gt;
+&lt;li&gt;.Net Framework 3.5 SP1&lt;/li&gt;
+&lt;li&gt;Windows Installer 4.5&lt;/li&gt;
+&lt;li&gt;Windows PowerShell 1.0&lt;/li&gt;
+&lt;li&gt;MS Core XML Services (MSXML) 6.0&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Note: You need to have genuine windows copy to download PowerShell from Microsoft website; however it is possible to find it elsewhere if you google around.&lt;/p&gt;
+
+&lt;h2 id=&#34;setup-sql-server&#34;&gt;Setup SQL Server&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Download and install &lt;a href=&#34;http://www.microsoft.com/downloads/details.aspx?FamilyId=B5D1B8C3-FDA5-4508-B0D0-1311D670E336&amp;amp;displaylang=en&#34;&gt;MS SQL Server Express 2008 with Advanced Services&lt;/a&gt; and choose the following options:&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Single instance&lt;/strong&gt; Install (not clustered !)&lt;/li&gt;
+&lt;li&gt;Name the instance &amp;#8220;SQLExpress&amp;#8221;&lt;/li&gt;
+&lt;li&gt;In the options box choose &amp;#8220;SQL Server&amp;#8221;, and &amp;#8220;&lt;strong&gt;Management Studio&lt;/strong&gt;&amp;#8221; (do not install full-text search, as it requires clustering)&lt;/li&gt;
+&lt;li&gt;Set the &lt;strong&gt;Server Service Account Name&lt;/strong&gt; to &amp;#8220;NT AUTHORITY\NETWORK SERVICE&amp;#8221;, auto&lt;/li&gt;
+&lt;li&gt;Set the &lt;strong&gt;SQL Server Browser&lt;/strong&gt; to &amp;#8220;NT AUTHORITY\NETWORK SERVICE&amp;#8221;, manual&lt;/li&gt;
+&lt;li&gt;Choose &lt;strong&gt;mixed mode authentication&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;Set SQL Server to listen on TCP port.
+
+&lt;ol&gt;
+&lt;li&gt;Start &amp;#8220;SQL Server Configuration Manager&amp;#8221;&lt;/li&gt;
+&lt;li&gt;Network Configuration -&amp;gt; Protocols : &lt;strong&gt;enable &amp;#8220;Named Pipes&amp;#8221; and &amp;#8220;TCP/IP&amp;#8221;&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;Right-click &amp;#8220;TCP/IP&amp;#8221; -&amp;gt; Listen All = Yes&amp;#8221;&lt;/li&gt;
+&lt;li&gt;In tab &amp;#8220;IP addresses&amp;#8221; -&amp;gt; Section IPAll -&amp;gt; &lt;strong&gt;TCP Dynamic Ports = 1433&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;Repeat these steps for SQL Native Client.&lt;/li&gt;
+&lt;li&gt;Restart SQL Server&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;li&gt;Create your database and set the owner to user &amp;#8216;sa&amp;#8217;, and change the user sa password.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;setup-php&#34;&gt;Setup PHP&lt;/h2&gt;
+
+&lt;p&gt;This assumes you have wamp installed, otherwise just change the path.&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Download the good version of &lt;a href=&#34;http://webzila.com/dll/1/ntwdblib.zip&#34;&gt;ntwdblib.dll (2000.80.194.0)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Overwrite C:\wamp\bin\apache\apache2.2.8\bin\ntwdblib.dll&lt;/li&gt;
+&lt;li&gt;Overwrite C:\wamp\bin\php\php5.2.6\ntwdblib.dll&lt;/li&gt;
+&lt;li&gt;Enable &lt;strong&gt;php_mssql.dll&lt;/strong&gt; in &lt;code&gt;php.ini&lt;/code&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Restart Apache&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-php&#34;&gt;$server = &#39;BANGKOK\SQLEXPRESS&#39;;  // The format is &amp;quot;HOST\SERVERNAME[,PORT]&amp;quot;
+$username = &#39;sa&#39;;
+mssql_connect($server, $username, $password);
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;debugging&#34;&gt;Debugging&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;You can test if SQL Server is listening on port 1433 by using &lt;a href=&#34;http://nmap.org/download.html&#34;&gt;NMap/Zenmap for Windows&lt;/a&gt; to do an &amp;#8220;Intense scan, all TCP ports&amp;#8221; on localhost, and you should see port 1433 open.&lt;/li&gt;
+&lt;li&gt;When trying to log within PHP you should see an entry in the log file:
+&lt;pre&gt;c:\program Files\Microsoft SQL Server\MSSQL10.SQLEXPRESS\MSSQL\Log\ERRORLOG&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I hope this will save you some time and swears!&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Capistrano 2 Recipe for Dreamhost Shared Hosting and mod_rails</title>
+      <link>http://localhost/2008/06/capistrano-2-recipe-for-dreamhost-shared-hosting-and-mod_rails/</link>
+      <pubDate>Mon, 30 Jun 2008 12:30:37 +0000</pubDate>
+      
+      <guid>http://localhost/2008/06/capistrano-2-recipe-for-dreamhost-shared-hosting-and-mod_rails/</guid>
+      <description>
+
+&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
+
+&lt;p&gt;I could not find an updated documentation on how to setup properly a rails application on Dreamhost, so I thought I&amp;#8217;d share the information I gathered.. First off, thanks to the Phusion team, with &lt;a href=&#34;http://www.modrails.com/&#34; target=&#34;_blank&#34;&gt;Passenger (a.k.a. mod_rails)&lt;/a&gt;, it&amp;#8217;s now very convenient, easy, and cheap to run a rails application on Dreamhost.&lt;/p&gt;
+
+&lt;p&gt;Also, special thanks to &lt;a href=&#34;http://gabrito.com/&#34; target=&#34;_blank&#34;&gt;Todd Huss&lt;/a&gt; for discovering the &lt;a href=&#34;http://gabrito.com/post/ruby-on-rails-dreamhost-plugin&#34; target=&#34;_blank&#34;&gt;multi dreamhost user hack&lt;/a&gt;. Basically, you need to run each of your rails application on Dreamhost under a different shell user. Their process monitor, will start killing your processes when the total memory per user exceeds 200 MB of virtual memory (VSZ).&lt;/p&gt;
+
+&lt;p&gt;So here&amp;#8217;s the guide, even perfect newbees and skript-kiddies should be able to follow :&lt;/p&gt;
+
+&lt;h2 id=&#34;the-complete-step-by-step&#34;&gt;The complete step by step&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;INFO&lt;/strong&gt; : Let Capistrano create the directory structure on the server BEFORE you set the public dir of your application in the edit domain section of the Control Panel. This will avoid you conflicts when Capistrano attemps to create the symlinks.&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;First, configure your new rails application using Dreamhost Control Panel :&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Create a new repository for your application (&lt;a href=&#34;http://localhost/asset/2008/6/30/dreamhost_create_repository.jpg&#34;&gt;screenshot&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Create a new shell / SSH user (read why &lt;a href=&#34;http://gabrito.com/post/ruby-on-rails-dreamhost-plugin&#34; target=&#34;_blank&#34;&gt;here&lt;/a&gt;) with the same name as your application (&lt;a href=&#34;http://localhost/asset/2008/6/30/dreamhost_create_user.jpg&#34;&gt;screenshot&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Create a new database (&lt;a href=&#34;http://localhost/asset/2008/6/30/dreamhost_create_database.jpg&#34;&gt;screenshot&lt;/a&gt;)
+&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Add your application to your repository&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Create your rails skeleton (if it&amp;#8217;s done yet), on your local machine (assuming you use *nix, but should be similar on Windows)&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt; rails myrailsapp --freeze
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Add your application to the repository&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ cd myrailsapp
+$ svn mkdir http://svn.myrailsappdomain/myrails/trunk
+$ svn checkout http://svn.myrailsappdomain/myrails/trunk ./
+$ svn add  *
+$ svn commit
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Exclude database configuration, temporary files, and any user upload directory from the source control :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ svn copy config/database.yml config/database.yml.example
+$ svn remove config/database.yml -f
+$ svn propset svn:ignore &amp;quot;database.yml&amp;quot; config/
+$ svn remove tmp/*
+$ svn propset svn:ignore &amp;quot;*&amp;quot; tmp/
+# If you need to share unversionned user-uploaded files, between deploys :
+$ mkdir public/uploads
+$ svn add public/uploads
+$ svn propset svn:ignore &amp;quot;*&amp;quot; public/uploads/
+$ svn remove log/*
+$ svn propset svn:ignore &amp;quot;*&amp;quot; log/
+$ svn remove db/*.sqlite3
+$ svn propset svn:ignore &amp;quot;*.sqlite3&amp;quot; db/
+$ svn commit
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Next, create the Capistrano recipe :&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Create recipe skeleton :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ cd /path/to/your/myrailsapp
+$ capify .
+[add] writing `./Capfile&#39;
+[add] writing `./config/deploy.rb&#39;
+[done] capified!
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Replace the content of &lt;code&gt;config/deploy.rb&lt;/code&gt; with the following :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;#############################################################
+## General
+#############################################################
+
+set :application, &amp;quot;myrailsapp&amp;quot;
+#############################################################
+## Servers
+#############################################################
+set :use_sudo, false    # Dreamhost does not support sudo
+set :user, application  # Dreamhost SSH User
+set :domain, &amp;quot;myrailsapp.domain.com&amp;quot;
+
+server domain, :app, :web
+role :db, domain, :primary =&amp;amp;gt; true
+
+#############################################################
+## Subversion
+#############################################################
+set :scm, :subversion
+set :scm_user, application   # Sets &#39;my_svn_user&#39; instead, if you are using different name than your app.
+set :scm_auth_cache, true  # Prompts for password once
+set :scm_password, Proc.new { Capistrano::CLI.password_prompt(&amp;quot;SCM password for #{scm_user}:&amp;quot;) }
+set :repository,  &amp;quot;http://svn.myrailsappdomain/#{application}/trunk&amp;quot;
+set :deploy_to, &amp;quot;/home/#{user}/#{domain}&amp;quot;
+# keeps a local checkout of the repository on the server to get faster deployments
+set :deploy_via, :remote_cache
+
+#############################################################
+## Tasks
+#############################################################
+
+namespace :deploy do
+  desc &amp;quot;Restart Application (using tmp/restart.txt)&amp;quot;
+  task :restart_passenger do
+    run &amp;quot;touch #{current_path}/tmp/restart.txt&amp;quot;
+  end
+
+  desc &amp;quot;Restarts your application.&amp;quot;
+  task :restart do
+    restart_passenger
+  end
+
+  desc &amp;quot;Link shared files&amp;quot;
+  before :symlink do
+    run &amp;quot;rm -drf #{release_path}/public/uploads&amp;quot;
+    run &amp;quot;ln -s #{shared_path}/uploads #{release_path}/public/uploads&amp;quot;
+    run &amp;quot;rm -f #{release_path}/config/database.yml&amp;quot;
+    run &amp;quot;ln -s #{shared_path}/database.yml #{release_path}/config/database.yml&amp;quot;
+  end
+end
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Then, prepare the directory structure on the server :&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Create the Capistrano structure (releases/, shared/), by typing this on your local machine :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ cap deploy:setup
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Login to your server to manually create your shared directories and files (if any)&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ ssh myrailsapp.domain.com
+[tootsie]$ cd myrailsapp/shared
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Configure your database on the server (you don&amp;#8217;t want this file in your repository) :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;# config/database.yml
+
+development:
+  adapter: sqlite3
+  database: db/development.sqlite3
+  timeout: 5000
+
+test:
+  adapter: sqlite3
+  database: db/test.sqlite3
+  timeout: 5000
+
+production:
+  adapter: mysql
+  encoding: utf8
+  database: myrailsapp
+  username: myrailsapp
+  password: [your_db_password]
+  host: mysql.[myrailsapp.domain].com
+  timeout: 5000
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Create your upload directory (OPTIONAL) :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;[tootsie]$ mkdir uploads
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Deploy your application. Note : it will only prompt for your SVN password at the first deploy.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ cap deploy
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;And finally the most important, configure your domain like this : &lt;img src=&#34;http://localhost/asset/2008/6/30/dreamhost_edit_rails_domain.jpg&#34; width=&#34;500&#34; height=&#34;354&#34; /&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;update-2008-07-01&#34;&gt;[UPDATE 2008/07/01]&lt;/h2&gt;
+
+&lt;p&gt;If you need to install custom gems on your account, you can find more info &lt;a title=&#34;Dreamhost Wiki : Installing your own gems and RubyGems&#34; href=&#34;http://wiki.dreamhost.com/index.php/RubyGems&#34; target=&#34;_blank&#34;&gt;here&lt;/a&gt;, &lt;a title=&#34;installing your own packages and gems&#34; href=&#34;http://nateclark.com/articles/2006/10/20/dreamhost-your-own-packages-and-gems&#34; target=&#34;_blank&#34;&gt;here&lt;/a&gt; and &lt;a href=&#34;http://rails.dreamhosters.com/&#34; target=&#34;_blank&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;references&#34;&gt;References&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;http://labs.peritor.com/webistrano/wiki/ConfigurationParameter&#34;&gt;http://labs.peritor.com/webistrano/wiki/ConfigurationParameter&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://groups.google.ca/group/capistrano/browse_thread/thread/6ef7c7c212547eab&#34;&gt;http://groups.google.ca/group/capistrano/browse_thread/thread/6ef7c7c212547eab (for scm_password)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://groups.google.com/group/capistrano/browse_thread/thread/ae7b16a16abf4e5d&#34;&gt;http://groups.google.com/group/capistrano/browse_thread/thread/ae7b16a16abf4e5d (for task hookups with namespaces)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://groups.google.com/group/capistrano/web/deploying-on-dreamhost&#34;&gt;http://groups.google.com/group/capistrano/web/deploying-on-dreamhost&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://gabrito.com/post/ruby-on-rails-dreamhost-plugin&#34;&gt;http://gabrito.com/post/ruby-on-rails-dreamhost-plugin&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.railsforum.com/viewtopic.php?id=8118&#34;&gt;http://www.railsforum.com/viewtopic.php?id=8118&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://wiki.dreamhost.com/Capistrano&#34;&gt;Dreamhost Wiki : Capistrano&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://wiki.dreamhost.com/Ruby_on_Rails&#34;&gt;Dreamhost Wiki : Ruby on Rails&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://manuals.rubyonrails.com/read/chapter/97&#34;&gt;Capistrano Manual&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Hello !</title>
+      <link>http://localhost/2008/06/hello/</link>
+      <pubDate>Mon, 02 Jun 2008 06:27:52 +0000</pubDate>
+      
+      <guid>http://localhost/2008/06/hello/</guid>
+      <description>&lt;p&gt;I am David Lauzon, a freelance web developer since February 2005. I am usually based in Montreal (QC, Canada), but I will be blogging from &lt;a href=&#34;http://maps.google.com/maps?f=q&amp;hl=en&amp;q=Chang+Moi,+Thailand&amp;sll=18.798581,98.991451&amp;sspn=0.03697,0.063257&amp;ie=UTF8&amp;cd=2&amp;geocode=0,18.795565,98.998720&amp;ll=18.798418,98.997717&amp;spn=0.03697,0.063257&amp;z=14&amp;iwloc=addr&#34; target=&#34;_blank&#34;&gt;Chiang Mai&lt;/a&gt; (Thailand) for the following months.&lt;/p&gt;
+
+&lt;p&gt;I will be writing about Ruby on Rails, Web 2.0, Linux, and general IT developments. I also will be releasing open source code here, so stay tuned !&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

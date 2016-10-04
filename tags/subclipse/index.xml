@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Subclipse on Encounters with the World Wild Web</title>
+    <link>http://localhost/tags/subclipse/</link>
+    <description>Recent content in Subclipse on Encounters with the World Wild Web</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 27 Feb 2010 14:25:25 +0000</lastBuildDate>
+    <atom:link href="http://localhost/tags/subclipse/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Use svn with Eclipse Galileo on Ubuntu 9.10</title>
+      <link>http://localhost/2010/02/use-svn-with-eclipse-galileo-on-ubuntu-9-10/</link>
+      <pubDate>Sat, 27 Feb 2010 14:25:25 +0000</pubDate>
+      
+      <guid>http://localhost/2010/02/use-svn-with-eclipse-galileo-on-ubuntu-9-10/</guid>
+      <description>&lt;p&gt;After wasting a lot of time myself, I thought this could serve some other people&amp;#8230;&lt;/p&gt;
+
+&lt;p&gt;So here&amp;#8217;s how I did it :&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;First install the Subclipse plugin
+
+&lt;ol&gt;
+&lt;li&gt;Run sudo eclipse (that will install plugins system-wide)&lt;/li&gt;
+&lt;li&gt;Eclipse &amp;gt; Install new software &amp;gt; Add&lt;/li&gt;
+&lt;li&gt;Name = &amp;#8220;whatever&amp;#8221;&lt;/li&gt;
+&lt;li&gt;Location = &lt;strong&gt;&lt;a href=&#34;http://subclipse.tigris.org/update_1.6.x&#34;&gt;http://subclipse.tigris.org/update_1.6.x&lt;/a&gt;&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;OK&lt;/li&gt;
+&lt;li&gt;Work with: &amp;#8220;whatever&amp;#8221;&lt;/li&gt;
+&lt;li&gt;Select these to install :
+
+&lt;ul&gt;
+&lt;li&gt;CollabNet Merge Client&lt;/li&gt;
+&lt;li&gt;Subclipse&lt;/li&gt;
+&lt;li&gt;Subclipse Integration for Mylyn 3.x&lt;/li&gt;
+&lt;li&gt;Subversion Client Adapter&lt;/li&gt;
+&lt;li&gt;Subversion JavaHL Native Library Adapter&lt;/li&gt;
+&lt;li&gt;Subversion Revision Graph&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;If you get a &amp;#8220;Subversion 1.6 contains a bug that causes Eclipse to crash &amp;#8230;. GNOME keyring &amp;#8230; we recommand &amp;#8230; &amp;#8220;, choose OK.&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Next install the Java bindings for SVN&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;sudo apt-get install libsvn-java&lt;/li&gt;
+&lt;li&gt;Eclipse &amp;gt; Window &amp;gt; Preferences &amp;gt; Team &amp;gt; SVN&lt;/li&gt;
+&lt;li&gt;If that triggers a &amp;#8220;Failed to load JavaHL Library.&amp;#8221; error, you need to add libsvnjavahl-1 in the Eclipse path :&lt;/li&gt;
+&lt;li&gt;Just throw a symlink into one of the path in the error message :&lt;/li&gt;
+
+&lt;li&gt;&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;sudo ln -s /usr/lib/jni/libsvnjavahl-1.so /usr/lib/libsvnjavahl-1.so
+         sudo ln -s /usr/lib/jni/libsvnjavahl-1.so.0.0.0 /usr/lib/libsvnjavahl-1.so.0.0.0
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Restart eclipse and step 3 should be solved.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Perhaps you want to use SVN with existing checkout project ?&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Right-click on your project in Eclipse&lt;/li&gt;
+&lt;li&gt;Team &amp;gt; Share Project &amp;gt; svn &amp;gt; Validate Conneciton on Finish &amp;gt; Finish&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://subclipse.tigris.org/servlets/ProjectProcess?pageID=rr1TIx&#34;&gt;Screenshots of what you can do with Subclipse&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

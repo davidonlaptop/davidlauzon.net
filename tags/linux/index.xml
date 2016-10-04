@@ -1,0 +1,369 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Linux on Encounters with the World Wild Web</title>
+    <link>http://localhost/tags/linux/</link>
+    <description>Recent content in Linux on Encounters with the World Wild Web</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 29 Jun 2011 23:11:36 +0000</lastBuildDate>
+    <atom:link href="http://localhost/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Apache virtual host using a symlink to home directory</title>
+      <link>http://localhost/2011/06/apache-virtual-host-using-a-symlink-to-home-directory/</link>
+      <pubDate>Wed, 29 Jun 2011 23:11:36 +0000</pubDate>
+      
+      <guid>http://localhost/2011/06/apache-virtual-host-using-a-symlink-to-home-directory/</guid>
+      <description>
+
+&lt;h2 id=&#34;forbidden-you-don-8217-t-have-the-permission-to-access-on-this-server&#34;&gt;Forbidden : You don&amp;#8217;t have the permission to access / on this server.&lt;/h2&gt;
+
+&lt;p&gt;If you see this error message, then perhaps you&amp;#8217;re trying to use an Apache virtual host that&amp;#8217;s located somewhere in your home directory?&lt;/p&gt;
+
+&lt;p&gt;Well this could be because Apache doesn&amp;#8217;t have the permissions to traverse the directory, and this post explains how to fix it with complete config files.&lt;/p&gt;
+
+&lt;p&gt;In my case, my default apache document root is /var/www and I want to server &lt;code&gt;/var/www/potdigger&lt;/code&gt; which is a symlink to &lt;code&gt;/home/david/workspace/php/potdigger_backend&lt;/code&gt; .&lt;/p&gt;
+
+&lt;h2 id=&#34;find-out-what-user-the-apache-process-is-using&#34;&gt;Find out what user the Apache process is using&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;david@dragdroid:~$ ps auxf |grep apache
+david    23857  0.0  0.0   5304   856 pts/0    S+   18:00   0:00  |   \_ grep --color=auto apache
+root     23381  0.0  0.0   5652  2628 ?        Ss   17:25   0:00 /usr/sbin/apache2 -k start
+www-data 23384  0.0  0.0   5424  1816 ?        S    17:25   0:00  \_ /usr/sbin/apache2 -k start
+www-data 23386  0.0  0.0 227328  2820 ?        Sl   17:25   0:00  \_ /usr/sbin/apache2 -k start
+www-data 23387  0.0  0.0 227208  2624 ?        Sl   17:25   0:00  \_ /usr/sbin/apache2 -k start
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;In my case (Ubuntu), the user is &lt;code&gt;www-data&lt;/code&gt;. Note : Your process could be named httpd instead of apache.&lt;/p&gt;
+
+&lt;h2 id=&#34;login-with-this-user-to-see-which-directories-causes-problem&#34;&gt;Login with this user to see which directories causes problem.&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;david@dragdroid:~$ sudo -i -u www-data
+[sudo] password for david: 
+$ ls /var/www/ -l
+total 12
+-rw-r--r-- 1 root  root   177 2011-06-29 15:30 index.html
+lrwxrwxrwx 1 root  root    43 2011-06-29 16:13 potdigger -&amp;gt; /home/david/workspace/php/potdigger_backend
+$ cd potdigger
+cd: 2: can&#39;t cd to potdigger
+$ cd /home/david/workspace/php/potdigger_backend
+cd: 3: can&#39;t cd to /home/david/workspace/php/potdigger_backend
+$ cd /home/david/workspace/php
+cd: 5: can&#39;t cd to /home/david/workspace/php
+$ cd /home/david/workspace    
+cd: 6: can&#39;t cd to /home/david/workspace
+$ cd /home/david 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now we see that we can get to &lt;code&gt;/home/david&lt;/code&gt; without any problem. It&amp;#8217;s the &lt;code&gt;workspace/php/potdigger_backend&lt;/code&gt; path that it can&amp;#8217;t access.&lt;/p&gt;
+
+&lt;h2 id=&#34;set-the-executable-permission-on-these-directories&#34;&gt;Set the executable permission on these directories.&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;david@dragdroid:~$ pwd
+/home/david
+david@dragdroid:~$ chmod a+x workspace workspace/php workspace/php/potdigger_backend
+david@dragdroid:~$
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Open a new terminal window (so that you use your logon user) and type :&lt;/p&gt;
+
+&lt;h2 id=&#34;verify-that-it-works&#34;&gt;Verify that it works&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ cd /home/david/workspace/php/potdigger_backend
+$ pwd
+/home/david/workspace/php/potdigger_backend
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Use the first window (logged in as &lt;code&gt;www_data&lt;/code&gt;) and type :&lt;/p&gt;
+
+&lt;h2 id=&#34;reload-the-apache-configuration-and-boom&#34;&gt;Reload the apache configuration, and boom!&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;david@dragdroid:~$ sudo /etc/init.d/apache2 reload
+[sudo] password for david: 
+ * Reloading web server config apache2                                                                                                                                                                                                       apache2: Could not reliably determine the server&#39;s fully qualified domain name, using 127.0.1.1 for ServerName                                                                                                                                                                                                        [ OK ]
+david@dragdroid:~$
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Here&amp;#8217;s my vhost related config :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;NameVirtualHost *:80
+&amp;lt;VirtualHost *:80&amp;gt;
+        ServerName potdigger
+
+        DocumentRoot /var/www/potdigger
+        &amp;lt;Directory /var/www/potdigger&amp;gt;
+                Options Indexes FollowSymLinks MultiViews
+                AllowOverride All
+                Order allow,deny
+                allow from all
+        &amp;lt;/Directory&amp;gt;
+
+        ErrorLog ${APACHE_LOG_DIR}/potdigger-error.log
+
+        # Possible values include: debug, info, notice, warn, error, crit, alert, emerg.
+        LogLevel  warn
+        CustomLog ${APACHE_LOG_DIR}/potdigger-access.log combined
+&amp;lt;/VirtualHost&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;edit-june-30th-2011-for-fedora-red-hat-users&#34;&gt;[EDIT June 30th 2011] For Fedora / Red Hat users&lt;/h2&gt;
+
+&lt;p&gt;When logging in using the apache user on my Fedora box, I would get a &amp;#8220;This account is currently not available&amp;#8221; error. So here&amp;#8217;s what I did :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;[david@H20 ~]$ cd $HOME
+[david@H20 ~]$ pwd
+/home/david
+[david@H20 ~]$ ls -ld . workspace workspace/android workspace/android/intuitia workspace/android/intuitia/prototypes workspace/android/intuitia/prototypes/potdigger_backend workspace/android/intuitia/prototypes/potdigger_backend/trunk
+drwx------. 78 david david 4096 Jun 30 16:38 .
+drwx------   5 david david 4096 May  5 12:42 workspace
+drwxrwxr-x  23 david david 4096 Jun 27 05:43 workspace/android
+drwxrwxr-x   4 david david 4096 May 27 10:57 workspace/android/intuitia
+drwxrwxr-x  14 david david 4096 Jun 30 16:37 workspace/android/intuitia/prototypes
+drwxrwxr-x   4 david david 4096 Jun 30 16:37 workspace/android/intuitia/prototypes/potdigger_backend
+drwxrwxr-x  10 david david 4096 Jun 30 16:37 workspace/android/intuitia/prototypes/potdigger_backend/trunk
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;We can observe that &lt;code&gt;/home/david&lt;/code&gt; (&lt;code&gt;.&lt;/code&gt;) and &lt;code&gt;/home/david/workspace&lt;/code&gt; directories lacks the executable bit.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;[david@H20 ~]$ chmod a+x . workspace
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Use svn with Eclipse Galileo on Ubuntu 9.10</title>
+      <link>http://localhost/2010/02/use-svn-with-eclipse-galileo-on-ubuntu-9-10/</link>
+      <pubDate>Sat, 27 Feb 2010 14:25:25 +0000</pubDate>
+      
+      <guid>http://localhost/2010/02/use-svn-with-eclipse-galileo-on-ubuntu-9-10/</guid>
+      <description>&lt;p&gt;After wasting a lot of time myself, I thought this could serve some other people&amp;#8230;&lt;/p&gt;
+
+&lt;p&gt;So here&amp;#8217;s how I did it :&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;First install the Subclipse plugin
+
+&lt;ol&gt;
+&lt;li&gt;Run sudo eclipse (that will install plugins system-wide)&lt;/li&gt;
+&lt;li&gt;Eclipse &amp;gt; Install new software &amp;gt; Add&lt;/li&gt;
+&lt;li&gt;Name = &amp;#8220;whatever&amp;#8221;&lt;/li&gt;
+&lt;li&gt;Location = &lt;strong&gt;&lt;a href=&#34;http://subclipse.tigris.org/update_1.6.x&#34;&gt;http://subclipse.tigris.org/update_1.6.x&lt;/a&gt;&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;OK&lt;/li&gt;
+&lt;li&gt;Work with: &amp;#8220;whatever&amp;#8221;&lt;/li&gt;
+&lt;li&gt;Select these to install :
+
+&lt;ul&gt;
+&lt;li&gt;CollabNet Merge Client&lt;/li&gt;
+&lt;li&gt;Subclipse&lt;/li&gt;
+&lt;li&gt;Subclipse Integration for Mylyn 3.x&lt;/li&gt;
+&lt;li&gt;Subversion Client Adapter&lt;/li&gt;
+&lt;li&gt;Subversion JavaHL Native Library Adapter&lt;/li&gt;
+&lt;li&gt;Subversion Revision Graph&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;If you get a &amp;#8220;Subversion 1.6 contains a bug that causes Eclipse to crash &amp;#8230;. GNOME keyring &amp;#8230; we recommand &amp;#8230; &amp;#8220;, choose OK.&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Next install the Java bindings for SVN&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;sudo apt-get install libsvn-java&lt;/li&gt;
+&lt;li&gt;Eclipse &amp;gt; Window &amp;gt; Preferences &amp;gt; Team &amp;gt; SVN&lt;/li&gt;
+&lt;li&gt;If that triggers a &amp;#8220;Failed to load JavaHL Library.&amp;#8221; error, you need to add libsvnjavahl-1 in the Eclipse path :&lt;/li&gt;
+&lt;li&gt;Just throw a symlink into one of the path in the error message :&lt;/li&gt;
+
+&lt;li&gt;&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;sudo ln -s /usr/lib/jni/libsvnjavahl-1.so /usr/lib/libsvnjavahl-1.so
+         sudo ln -s /usr/lib/jni/libsvnjavahl-1.so.0.0.0 /usr/lib/libsvnjavahl-1.so.0.0.0
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Restart eclipse and step 3 should be solved.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Perhaps you want to use SVN with existing checkout project ?&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Right-click on your project in Eclipse&lt;/li&gt;
+&lt;li&gt;Team &amp;gt; Share Project &amp;gt; svn &amp;gt; Validate Conneciton on Finish &amp;gt; Finish&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://subclipse.tigris.org/servlets/ProjectProcess?pageID=rr1TIx&#34;&gt;Screenshots of what you can do with Subclipse&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Getting started with QT Jambi on Linux</title>
+      <link>http://localhost/2010/01/getting-started-with-qt-jambi-on-linux/</link>
+      <pubDate>Thu, 21 Jan 2010 14:04:09 +0000</pubDate>
+      
+      <guid>http://localhost/2010/01/getting-started-with-qt-jambi-on-linux/</guid>
+      <description>
+
+&lt;p&gt;In this article I&amp;#8217;ll explain how to install QT Jambi and write your first Hello world program.&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Installation of QT Jambi SDK&lt;/li&gt;
+&lt;li&gt;Quick Overview of the SDK&lt;/li&gt;
+&lt;li&gt;Integration with Eclipse&lt;/li&gt;
+&lt;li&gt;Your first Jambi Program&lt;/li&gt;
+&lt;li&gt;Jambi Links&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;installation-of-qt-jambi-sdk&#34;&gt;Installation of QT Jambi SDK&lt;/h2&gt;
+
+&lt;p&gt;First, you need to download the &amp;#8220;Qt Jambi &amp;#8211; Java bindings Binaries&amp;#8221; for your OS (about 100MB), get it from� &lt;a href=&#34;http://qt.nokia.com/downloads&#34;&gt;here&lt;/a&gt;. Since I am using Ubuntu, the following instructions will be for Linux. You can extract the archive where you want, but remember the path because we&amp;#8217;ll need it later on &amp;#8211; I&amp;#8217;ll refer to ita s JAMBI_PATH (/usr/local/lib/qtjambi-linux32-lgpl-4.5.2_01 in this example).&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;tar -xzf qtjambi-linux32-lgpl-4.5.2_01.tar.gz
+sudo mv qtjambi-linux32-lgpl-4.5.2_01 /usr/local/lib/
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Next we need to create a script to get QT Designer to generate .jui files for Java (instead QT/C++ .ui files). Name it jambi-designer.sh and insert the following code:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;cd JAMBI_PATH
+export CLASSPATH=`pwd`/qtjambi-4.5.2_01.jar:`pwd`/qtjambi-examples-4.5.2_01.jar:`pwd`/qtjambi-linux32-gcc-4.5.2_01.jar
+export JAVADIR=/usr/lib/jvm/java-6-sun/jre
+./designer.sh
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Make it executable and make it available in your path. Copy also the juic (jambi user interface compiler) which is used to convert the files generated by the Designer to java code.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;sudo chmod a+x jambi-designer.sh
+sudo ln -s /JAMBI_PATH/jambi-designer.sh  /usr/local/bin/jambi-designer
+cp bin/juic /usr/local/bin/
+# try it :
+jambi-designer  &amp;amp;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;quick-overview-of-the-sdk&#34;&gt;Quick Overview of the SDK&lt;/h2&gt;
+
+&lt;p&gt;So here you go you got the SDK installed. Now what are these files, do i need to install this huge file on every computer my program will run unto?? Obviously not!&lt;/p&gt;
+
+&lt;p&gt;Well here, you to remember that when you&amp;#8217;ll distribute your application, you&amp;#8217;ll need to bundle it with the Jambi core package (qtjambi-4.5.2_01.jar) and the jambi os-dependant package (qtjambi-linux32-gcc-4.5.2_01.jar). That&amp;#8217;s it!&lt;/p&gt;
+
+&lt;p&gt;If you want the application to run on Windows as well, you only need to add one jar file per os (you&amp;#8217;ll need to download the whole sdk just to get the .jar your need for each os).&lt;/p&gt;
+
+&lt;p&gt;What else am I getting?&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;tr&gt;
+    &lt;th&gt;
+      Directory / file
+    &lt;/th&gt;
+    &lt;th&gt;
+      Details
+    &lt;/th&gt;
+  &lt;/tr&gt;
+  
+  &lt;tr&gt;
+    &lt;td&gt;
+      bin
+    &lt;/td&gt;
+    &lt;td&gt;
+      Designer and UI Compiler binaries
+    &lt;/td&gt;
+  &lt;/tr&gt;
+  
+  &lt;tr&gt;
+    &lt;td&gt;
+      com/trolltech/
+    &lt;/td&gt;
+    &lt;td&gt;
+      Jambi Core &amp; Examples Source code
+    &lt;/td&gt;
+  &lt;/tr&gt;
+  
+  &lt;tr&gt;
+    &lt;td&gt;
+      doc/
+    &lt;/td&gt;
+    &lt;td&gt;
+      Jambi HTML Documentation (use your browser)
+    &lt;/td&gt;
+  &lt;/tr&gt;
+  
+  &lt;tr&gt;
+    &lt;td&gt;
+      qtjambi.sh
+    &lt;/td&gt;
+    &lt;td&gt;
+      Execute this script to view the numeros code samples
+    &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://localhost/asset/2010/2/21/jambi_examples.jpg&#34; alt=&#34;&#34; width=&#34;442&#34; height=&#34;354&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+
+&lt;h2 id=&#34;integration-with-eclipse&#34;&gt;Integration with Eclipse&lt;/h2&gt;
+
+&lt;p&gt;So you want code auto-completion for Jambi classes in Eclipse? You&amp;#8217;re dreaming! Nope, actually you can! Just download the &amp;#8220;eclipse integration package&amp;#8221; and extract it in the plugin directory of your Eclipse installation.&lt;/p&gt;
+
+&lt;p&gt;Note : I haven&amp;#8217;t been able to install the integration plugin with default Eclipse package in Kubuntu 9.10 because it does not allow you to add plugins as root. So to get around this, just uninstall it from the package manager and install it manually (get &lt;a href=&#34;http://www.eclipse.org/downloads/&#34;&gt;eclipse here&lt;/a&gt;).&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;tar -xzf eclipse-java-galileo-SR1-linux-gtk.tar.gz
+sudo mv eclipse /opt/eclipse-3.5.1
+cd /opt/eclipse-3.5.1
+sudo tar -xzf /path/to/qtjambi-eclipse-integration-linux32-4.5.2_01.tar.gz
+./eclipse -clean
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Next on Eclipse restart, go to Window &amp;gt; Preferences &amp;gt; QT Jambi Preference Page and use these settings :&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Jambi Location = where you installed the first archive (JAMBI_PATH)&lt;/li&gt;
+&lt;li&gt;Generate files in separate folder = src/ui&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;your-first-jambi-program&#34;&gt;Your first Jambi Program&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Click on File &amp;gt; New &amp;gt; Other &amp;gt; QT Jambi Project.&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Add a new class named &amp;#8220;HelloWorld&amp;#8221; and insert this code:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;import com.trolltech.qt.gui.*;
+
+public class HelloWorld extends QWidget{
+
+    public static void main(String[] args) {
+        // Instanciates a Jambi Application and pass it the command-line arguments to allow the QApplication
+        // static instance to handle the arguments it recognizes, such as -font and -style.
+        QApplication.initialize(args);
+
+        // Creates an instance of our QWidget (could be also a QMainWindow, QDialog, etc.)
+        // and set the parent to null
+        HelloWorld helloWorld = new HelloWorld(null);
+
+        // Create a new label and sets its parent to our view.
+        QLabel label = new QLabel(&amp;quot;Ping World!&amp;quot;, helloWorld);
+
+        // Show our view
+        helloWorld.show();
+
+        // Execute Jambi Application
+        QApplication.exec();
+    }
+
+    public HelloWorld(QWidget parent){
+        super(parent);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;jambi-links&#34;&gt;Jambi Links&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://qt.nokia.com/doc/qtjambi-4.5.2_01/com/trolltech/qt/qtjambi-index.html&#34;&gt;Jambi Documentation&lt;/a&gt; (&amp;#8220;Signals and Slots&amp;#8221; is a recommanded reading)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://qt.nokia.com/doc/qtjambi-4.5.2_01/index.html&#34;&gt;Jambi Classes javadoc&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;file:///usr/local/lib/qtjambi-linux32-lgpl-4.5.2_01/doc/html/index.html&#34;&gt;file:///usr/local/lib/qtjambi-linux32-lgpl-4.5.2_01/doc/html/index.html&lt;/a&gt; (same as above but on your computer)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://doc.trolltech.com/4.5/index.html&#34;&gt;C++ QT Documentation&lt;/a&gt; (the API is the same and sometimes you find more information than on Jambi)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.informit.com/articles/article.aspx?p=1405564&#34;&gt;Getting Started Article by Jasmin Blanchette&lt;/a&gt; (including a part on how to integrate C++ components with QT Jambi)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://qt.nokia.com/doc/qtjambi-4.5.2_01/com/trolltech/qt/qtjambi-examples.html&#34;&gt;Jambi Examples&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

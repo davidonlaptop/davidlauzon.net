@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Svn on Encounters with the World Wild Web</title>
+    <link>http://localhost/tags/svn/</link>
+    <description>Recent content in Svn on Encounters with the World Wild Web</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 27 Feb 2010 14:25:25 +0000</lastBuildDate>
+    <atom:link href="http://localhost/tags/svn/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Use svn with Eclipse Galileo on Ubuntu 9.10</title>
+      <link>http://localhost/2010/02/use-svn-with-eclipse-galileo-on-ubuntu-9-10/</link>
+      <pubDate>Sat, 27 Feb 2010 14:25:25 +0000</pubDate>
+      
+      <guid>http://localhost/2010/02/use-svn-with-eclipse-galileo-on-ubuntu-9-10/</guid>
+      <description>&lt;p&gt;After wasting a lot of time myself, I thought this could serve some other people&amp;#8230;&lt;/p&gt;
+
+&lt;p&gt;So here&amp;#8217;s how I did it :&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;First install the Subclipse plugin
+
+&lt;ol&gt;
+&lt;li&gt;Run sudo eclipse (that will install plugins system-wide)&lt;/li&gt;
+&lt;li&gt;Eclipse &amp;gt; Install new software &amp;gt; Add&lt;/li&gt;
+&lt;li&gt;Name = &amp;#8220;whatever&amp;#8221;&lt;/li&gt;
+&lt;li&gt;Location = &lt;strong&gt;&lt;a href=&#34;http://subclipse.tigris.org/update_1.6.x&#34;&gt;http://subclipse.tigris.org/update_1.6.x&lt;/a&gt;&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;OK&lt;/li&gt;
+&lt;li&gt;Work with: &amp;#8220;whatever&amp;#8221;&lt;/li&gt;
+&lt;li&gt;Select these to install :
+
+&lt;ul&gt;
+&lt;li&gt;CollabNet Merge Client&lt;/li&gt;
+&lt;li&gt;Subclipse&lt;/li&gt;
+&lt;li&gt;Subclipse Integration for Mylyn 3.x&lt;/li&gt;
+&lt;li&gt;Subversion Client Adapter&lt;/li&gt;
+&lt;li&gt;Subversion JavaHL Native Library Adapter&lt;/li&gt;
+&lt;li&gt;Subversion Revision Graph&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;If you get a &amp;#8220;Subversion 1.6 contains a bug that causes Eclipse to crash &amp;#8230;. GNOME keyring &amp;#8230; we recommand &amp;#8230; &amp;#8220;, choose OK.&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Next install the Java bindings for SVN&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;sudo apt-get install libsvn-java&lt;/li&gt;
+&lt;li&gt;Eclipse &amp;gt; Window &amp;gt; Preferences &amp;gt; Team &amp;gt; SVN&lt;/li&gt;
+&lt;li&gt;If that triggers a &amp;#8220;Failed to load JavaHL Library.&amp;#8221; error, you need to add libsvnjavahl-1 in the Eclipse path :&lt;/li&gt;
+&lt;li&gt;Just throw a symlink into one of the path in the error message :&lt;/li&gt;
+
+&lt;li&gt;&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;sudo ln -s /usr/lib/jni/libsvnjavahl-1.so /usr/lib/libsvnjavahl-1.so
+         sudo ln -s /usr/lib/jni/libsvnjavahl-1.so.0.0.0 /usr/lib/libsvnjavahl-1.so.0.0.0
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Restart eclipse and step 3 should be solved.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Perhaps you want to use SVN with existing checkout project ?&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Right-click on your project in Eclipse&lt;/li&gt;
+&lt;li&gt;Team &amp;gt; Share Project &amp;gt; svn &amp;gt; Validate Conneciton on Finish &amp;gt; Finish&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://subclipse.tigris.org/servlets/ProjectProcess?pageID=rr1TIx&#34;&gt;Screenshots of what you can do with Subclipse&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Capistrano 2 Recipe for Dreamhost Shared Hosting and mod_rails</title>
+      <link>http://localhost/2008/06/capistrano-2-recipe-for-dreamhost-shared-hosting-and-mod_rails/</link>
+      <pubDate>Mon, 30 Jun 2008 12:30:37 +0000</pubDate>
+      
+      <guid>http://localhost/2008/06/capistrano-2-recipe-for-dreamhost-shared-hosting-and-mod_rails/</guid>
+      <description>
+
+&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
+
+&lt;p&gt;I could not find an updated documentation on how to setup properly a rails application on Dreamhost, so I thought I&amp;#8217;d share the information I gathered.. First off, thanks to the Phusion team, with &lt;a href=&#34;http://www.modrails.com/&#34; target=&#34;_blank&#34;&gt;Passenger (a.k.a. mod_rails)&lt;/a&gt;, it&amp;#8217;s now very convenient, easy, and cheap to run a rails application on Dreamhost.&lt;/p&gt;
+
+&lt;p&gt;Also, special thanks to &lt;a href=&#34;http://gabrito.com/&#34; target=&#34;_blank&#34;&gt;Todd Huss&lt;/a&gt; for discovering the &lt;a href=&#34;http://gabrito.com/post/ruby-on-rails-dreamhost-plugin&#34; target=&#34;_blank&#34;&gt;multi dreamhost user hack&lt;/a&gt;. Basically, you need to run each of your rails application on Dreamhost under a different shell user. Their process monitor, will start killing your processes when the total memory per user exceeds 200 MB of virtual memory (VSZ).&lt;/p&gt;
+
+&lt;p&gt;So here&amp;#8217;s the guide, even perfect newbees and skript-kiddies should be able to follow :&lt;/p&gt;
+
+&lt;h2 id=&#34;the-complete-step-by-step&#34;&gt;The complete step by step&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;INFO&lt;/strong&gt; : Let Capistrano create the directory structure on the server BEFORE you set the public dir of your application in the edit domain section of the Control Panel. This will avoid you conflicts when Capistrano attemps to create the symlinks.&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;First, configure your new rails application using Dreamhost Control Panel :&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Create a new repository for your application (&lt;a href=&#34;http://localhost/asset/2008/6/30/dreamhost_create_repository.jpg&#34;&gt;screenshot&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Create a new shell / SSH user (read why &lt;a href=&#34;http://gabrito.com/post/ruby-on-rails-dreamhost-plugin&#34; target=&#34;_blank&#34;&gt;here&lt;/a&gt;) with the same name as your application (&lt;a href=&#34;http://localhost/asset/2008/6/30/dreamhost_create_user.jpg&#34;&gt;screenshot&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Create a new database (&lt;a href=&#34;http://localhost/asset/2008/6/30/dreamhost_create_database.jpg&#34;&gt;screenshot&lt;/a&gt;)
+&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Add your application to your repository&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Create your rails skeleton (if it&amp;#8217;s done yet), on your local machine (assuming you use *nix, but should be similar on Windows)&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt; rails myrailsapp --freeze
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Add your application to the repository&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ cd myrailsapp
+$ svn mkdir http://svn.myrailsappdomain/myrails/trunk
+$ svn checkout http://svn.myrailsappdomain/myrails/trunk ./
+$ svn add  *
+$ svn commit
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Exclude database configuration, temporary files, and any user upload directory from the source control :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ svn copy config/database.yml config/database.yml.example
+$ svn remove config/database.yml -f
+$ svn propset svn:ignore &amp;quot;database.yml&amp;quot; config/
+$ svn remove tmp/*
+$ svn propset svn:ignore &amp;quot;*&amp;quot; tmp/
+# If you need to share unversionned user-uploaded files, between deploys :
+$ mkdir public/uploads
+$ svn add public/uploads
+$ svn propset svn:ignore &amp;quot;*&amp;quot; public/uploads/
+$ svn remove log/*
+$ svn propset svn:ignore &amp;quot;*&amp;quot; log/
+$ svn remove db/*.sqlite3
+$ svn propset svn:ignore &amp;quot;*.sqlite3&amp;quot; db/
+$ svn commit
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Next, create the Capistrano recipe :&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Create recipe skeleton :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ cd /path/to/your/myrailsapp
+$ capify .
+[add] writing `./Capfile&#39;
+[add] writing `./config/deploy.rb&#39;
+[done] capified!
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Replace the content of &lt;code&gt;config/deploy.rb&lt;/code&gt; with the following :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;#############################################################
+## General
+#############################################################
+
+set :application, &amp;quot;myrailsapp&amp;quot;
+#############################################################
+## Servers
+#############################################################
+set :use_sudo, false    # Dreamhost does not support sudo
+set :user, application  # Dreamhost SSH User
+set :domain, &amp;quot;myrailsapp.domain.com&amp;quot;
+
+server domain, :app, :web
+role :db, domain, :primary =&amp;amp;gt; true
+
+#############################################################
+## Subversion
+#############################################################
+set :scm, :subversion
+set :scm_user, application   # Sets &#39;my_svn_user&#39; instead, if you are using different name than your app.
+set :scm_auth_cache, true  # Prompts for password once
+set :scm_password, Proc.new { Capistrano::CLI.password_prompt(&amp;quot;SCM password for #{scm_user}:&amp;quot;) }
+set :repository,  &amp;quot;http://svn.myrailsappdomain/#{application}/trunk&amp;quot;
+set :deploy_to, &amp;quot;/home/#{user}/#{domain}&amp;quot;
+# keeps a local checkout of the repository on the server to get faster deployments
+set :deploy_via, :remote_cache
+
+#############################################################
+## Tasks
+#############################################################
+
+namespace :deploy do
+  desc &amp;quot;Restart Application (using tmp/restart.txt)&amp;quot;
+  task :restart_passenger do
+    run &amp;quot;touch #{current_path}/tmp/restart.txt&amp;quot;
+  end
+
+  desc &amp;quot;Restarts your application.&amp;quot;
+  task :restart do
+    restart_passenger
+  end
+
+  desc &amp;quot;Link shared files&amp;quot;
+  before :symlink do
+    run &amp;quot;rm -drf #{release_path}/public/uploads&amp;quot;
+    run &amp;quot;ln -s #{shared_path}/uploads #{release_path}/public/uploads&amp;quot;
+    run &amp;quot;rm -f #{release_path}/config/database.yml&amp;quot;
+    run &amp;quot;ln -s #{shared_path}/database.yml #{release_path}/config/database.yml&amp;quot;
+  end
+end
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Then, prepare the directory structure on the server :&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Create the Capistrano structure (releases/, shared/), by typing this on your local machine :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ cap deploy:setup
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Login to your server to manually create your shared directories and files (if any)&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ ssh myrailsapp.domain.com
+[tootsie]$ cd myrailsapp/shared
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Configure your database on the server (you don&amp;#8217;t want this file in your repository) :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;# config/database.yml
+
+development:
+  adapter: sqlite3
+  database: db/development.sqlite3
+  timeout: 5000
+
+test:
+  adapter: sqlite3
+  database: db/test.sqlite3
+  timeout: 5000
+
+production:
+  adapter: mysql
+  encoding: utf8
+  database: myrailsapp
+  username: myrailsapp
+  password: [your_db_password]
+  host: mysql.[myrailsapp.domain].com
+  timeout: 5000
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Create your upload directory (OPTIONAL) :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;[tootsie]$ mkdir uploads
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Deploy your application. Note : it will only prompt for your SVN password at the first deploy.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ cap deploy
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;And finally the most important, configure your domain like this : &lt;img src=&#34;http://localhost/asset/2008/6/30/dreamhost_edit_rails_domain.jpg&#34; width=&#34;500&#34; height=&#34;354&#34; /&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;update-2008-07-01&#34;&gt;[UPDATE 2008/07/01]&lt;/h2&gt;
+
+&lt;p&gt;If you need to install custom gems on your account, you can find more info &lt;a title=&#34;Dreamhost Wiki : Installing your own gems and RubyGems&#34; href=&#34;http://wiki.dreamhost.com/index.php/RubyGems&#34; target=&#34;_blank&#34;&gt;here&lt;/a&gt;, &lt;a title=&#34;installing your own packages and gems&#34; href=&#34;http://nateclark.com/articles/2006/10/20/dreamhost-your-own-packages-and-gems&#34; target=&#34;_blank&#34;&gt;here&lt;/a&gt; and &lt;a href=&#34;http://rails.dreamhosters.com/&#34; target=&#34;_blank&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;references&#34;&gt;References&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;http://labs.peritor.com/webistrano/wiki/ConfigurationParameter&#34;&gt;http://labs.peritor.com/webistrano/wiki/ConfigurationParameter&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://groups.google.ca/group/capistrano/browse_thread/thread/6ef7c7c212547eab&#34;&gt;http://groups.google.ca/group/capistrano/browse_thread/thread/6ef7c7c212547eab (for scm_password)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://groups.google.com/group/capistrano/browse_thread/thread/ae7b16a16abf4e5d&#34;&gt;http://groups.google.com/group/capistrano/browse_thread/thread/ae7b16a16abf4e5d (for task hookups with namespaces)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://groups.google.com/group/capistrano/web/deploying-on-dreamhost&#34;&gt;http://groups.google.com/group/capistrano/web/deploying-on-dreamhost&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://gabrito.com/post/ruby-on-rails-dreamhost-plugin&#34;&gt;http://gabrito.com/post/ruby-on-rails-dreamhost-plugin&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.railsforum.com/viewtopic.php?id=8118&#34;&gt;http://www.railsforum.com/viewtopic.php?id=8118&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://wiki.dreamhost.com/Capistrano&#34;&gt;Dreamhost Wiki : Capistrano&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://wiki.dreamhost.com/Ruby_on_Rails&#34;&gt;Dreamhost Wiki : Ruby on Rails&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://manuals.rubyonrails.com/read/chapter/97&#34;&gt;Capistrano Manual&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
