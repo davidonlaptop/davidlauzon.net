@@ -1,6 +1,7 @@
 # www.davidlauzon.net
 This git repo hosts the source code of my blog. It is built with the [HUGO static site generator](http://gohugo.io/).
 
+
 ## Directory Structure
 ```
 |-- archetypes/         # Types of contents created with `hugo new` command.
@@ -23,7 +24,7 @@ Note: On GitHub, the `public/` folder is found in the [`gh-pages` branch](/tree/
 5. Push the master branch
 6. Push the public subtree to the remote gh-pages branch
 
-### Workflow Scripts
+#### Workflow Scripts
 Several scripts have created to faciliate the above workflow:
 
 | Script | Description |
@@ -32,11 +33,29 @@ Several scripts have created to faciliate the above workflow:
 | [`./scripts/preview.sh`](scripts/preview.sh) | Step 2 |
 | [`./scripts/deploy.sh`](scripts/deploy.sh) | Steps 3-6 |
 
+
 ## Installing HUGO
-### OSX
+On OSX:
 ```bash
 brew update && brew install hugo
 ```
-
-### Windows
+On Windows:
 https://gohugo.io/tutorials/installing-on-windows/
+
+#### Installing a theme
+To install the hugo_theme_robust, do:
+```bash
+(cd themes && git submodule add https://github.com/dim0627/hugo_theme_robust.git)
+git add .gitmodules
+```
+Other themes available here: http://themes.gohugo.io/
+
+## Alternatives
+List of static site generator, ranked by popularity: https://staticsitegenerators.net/
+
+
+## TODO
+- [ ] Add menu : About Me, Projects, Portfolio
+- [ ] Remove public/ folder from master branch
+- [ ] Choose a better theme
+- [ ] Find a solution for [repository larger than 2GB](https://blog.bitbucket.org/2014/05/30/repository-size-limits/)
