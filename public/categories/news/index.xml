@@ -1,18 +1,39 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Encounters with the World Wild Web </title>
-    <link>http://localhost/categories/news/</link>
+    <title>News on Encounters with the World Wild Web</title>
+    <link>https://davidonlaptop.github.io/davidlauzon.net/categories/news/</link>
+    <description>Recent content in News on Encounters with the World Wild Web</description>
+    <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <author>David Lauzon</author>
-    <rights>(C) 2011</rights>
-    <updated>2011-06-26 00:09:13 &#43;0000 &#43;0000</updated>
-
+    <lastBuildDate>Sun, 26 Jun 2011 00:09:13 +0000</lastBuildDate>
+    <atom:link href="https://davidonlaptop.github.io/davidlauzon.net/categories/news/index.xml" rel="self" type="application/rss+xml" />
     
+    <item>
+      <title>Howdy! Finally switched to WordPress!</title>
+      <link>https://davidonlaptop.github.io/davidlauzon.net/2011/06/howdy-finally-switched-to-wordpress/</link>
+      <pubDate>Sun, 26 Jun 2011 00:09:13 +0000</pubDate>
       
-    
-      
-    
+      <guid>https://davidonlaptop.github.io/davidlauzon.net/2011/06/howdy-finally-switched-to-wordpress/</guid>
+      <description>&lt;p&gt;I finally made it!&lt;/p&gt;
 
+&lt;p&gt;Special thanks to &lt;a tittle=&#34;Migrated to WordPress&#34; href=&#34;http://schwuk.com/articles/2008/02/21/migrated-to-wordpress/&#34;&gt;Dave Murphy&lt;/a&gt; and &lt;a href=&#34;http://blog.jacius.info/2009/11/04/migrated-from-mephisto-to-wordpress/&#34;&gt;Jacius&lt;/a&gt; for their instructions on migrating from Mephisto to WordPress.&lt;/p&gt;
+
+&lt;p&gt;Now, I&amp;#8217;ll be able to catchup with some articles!! Stay tuned!&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Hello !</title>
+      <link>https://davidonlaptop.github.io/davidlauzon.net/2008/06/hello/</link>
+      <pubDate>Mon, 02 Jun 2008 06:27:52 +0000</pubDate>
+      
+      <guid>https://davidonlaptop.github.io/davidlauzon.net/2008/06/hello/</guid>
+      <description>&lt;p&gt;I am David Lauzon, a freelance web developer since February 2005. I am usually based in Montreal (QC, Canada), but I will be blogging from &lt;a href=&#34;http://maps.google.com/maps?f=q&amp;hl=en&amp;q=Chang+Moi,+Thailand&amp;sll=18.798581,98.991451&amp;sspn=0.03697,0.063257&amp;ie=UTF8&amp;cd=2&amp;geocode=0,18.795565,98.998720&amp;ll=18.798418,98.997717&amp;spn=0.03697,0.063257&amp;z=14&amp;iwloc=addr&#34; target=&#34;_blank&#34;&gt;Chiang Mai&lt;/a&gt; (Thailand) for the following months.&lt;/p&gt;
+
+&lt;p&gt;I will be writing about Ruby on Rails, Web 2.0, Linux, and general IT developments. I also will be releasing open source code here, so stay tuned !&lt;/p&gt;
+</description>
+    </item>
+    
   </channel>
 </rss>
