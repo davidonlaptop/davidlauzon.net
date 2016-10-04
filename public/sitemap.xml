@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+  <url>
+    <loc>http://localhost/</loc>
+    <lastmod>2011-12-27T04:44:46+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://localhost/2011/12/darky-rom-with-home-button-t959d/</loc>
+    <lastmod>2011-12-27T04:44:46+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://localhost/2011/11/greppdf/</loc>
+    <lastmod>2011-11-26T00:45:01+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://localhost/2011/06/apache-virtual-host-using-a-symlink-to-home-directory/</loc>
+    <lastmod>2011-06-29T23:11:36+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://localhost/portfolio/</loc>
+    <lastmod>2011-06-26T10:10:39+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://localhost/2011/06/howdy-finally-switched-to-wordpress/</loc>
+    <lastmod>2011-06-26T00:09:13+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://localhost/projects/</loc>
+    <lastmod>2011-06-25T09:44:24+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://localhost/about/</loc>
+    <lastmod>2011-06-25T04:11:09+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://localhost/2011/01/utilisation-de-googlemaps-en-java/</loc>
+    <lastmod>2011-01-09T14:30:53+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://localhost/2010/02/use-svn-with-eclipse-galileo-on-ubuntu-9-10/</loc>
+    <lastmod>2010-02-27T14:25:25+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://localhost/2010/02/how-to-use-qt-jambi-from-within-eclipse/</loc>
+    <lastmod>2010-02-21T14:16:46+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://localhost/2010/01/getting-started-with-qt-jambi-on-linux/</loc>
+    <lastmod>2010-01-21T14:04:09+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://localhost/2009/02/ms-sql-server-2008-with-php/</loc>
+    <lastmod>2009-02-18T13:59:49+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://localhost/2008/06/capistrano-2-recipe-for-dreamhost-shared-hosting-and-mod_rails/</loc>
+    <lastmod>2008-06-30T12:30:37+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://localhost/2008/06/hello/</loc>
+    <lastmod>2008-06-02T06:27:52+00:00</lastmod>
+  </url>
+  
+</urlset>
