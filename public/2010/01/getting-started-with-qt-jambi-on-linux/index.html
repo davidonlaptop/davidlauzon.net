@@ -1,0 +1,462 @@
+<div class="single">
+  <!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="generator" content="Hugo 0.16" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <link rel='stylesheet' href='//fonts.googleapis.com/css?family=Open+Sans|Marcellus+SC'>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
+    <link rel="stylesheet" href="http://localhost/css/styles.css">
+    <link rel="stylesheet" href="http://localhost/css/custom.css">
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="http://localhost//index.xml">
+
+    
+    <title>Getting started with QT Jambi on Linux - Encounters with the World Wild Web</title>
+    <meta property='og:title' content="Getting started with QT Jambi on Linux - Encounters with the World Wild Web">
+    <meta property="og:type" content="article">
+    
+
+    <meta property="og:url" content="http://localhost/2010/01/getting-started-with-qt-jambi-on-linux/">
+    
+    
+
+  </head>
+
+  <body>
+
+    <header class="site">
+      <div class="title"><a href="http://localhost/">Encounters with the World Wild Web</a></div>
+    </header>
+
+    <div class="container site">
+
+
+
+  <div class="row">
+    <div class="col-sm-9">
+
+      <article class="single" itemscope="itemscope" itemtype="http://schema.org/Article">
+
+        <meta itemprop="mainEntityOfPage"  itemType="https://schema.org/WebPage" content="http://localhost/"/>
+        <meta itemprop="dateModified" content="2010-01-21T14:04:09&#43;00:00">
+        <meta itemprop="headline" content="Getting started with QT Jambi on Linux">
+        <meta itemprop="description" content="In this article I&#8217;ll explain how to install QT Jambi and write your first Hello world program. Installation of QT Jambi SDK Quick Overview of the SDK Integration with Eclipse Your first Jambi Program Jambi Links Installation of QT Jambi SDK First, you need to download the &#8220;Qt Jambi &#8211; Java bindings Binaries&#8221; for your OS (about 100MB), get it from� here. Since I am using Ubuntu, the following instructions will be for Linux.">
+        <meta itemprop="url" content="http://localhost/2010/01/getting-started-with-qt-jambi-on-linux/">
+        <div itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
+          <meta itemprop="url" content="http://localhost/images/default.jpg" />
+          <meta itemprop="width" content="800">
+          <meta itemprop="height" content="800">
+        </div>
+        <div itemprop="publisher" itemscope itemtype="https://schema.org/Organization">
+          <div itemprop="logo" itemscope itemtype="https://schema.org/ImageObject">
+            <meta itemprop="url" content="http://localhost/images/logo.jpg">
+            <meta itemprop="width" content="100">
+            <meta itemprop="height" content="100">
+          </div>
+          <meta itemprop="name" content="Encounters with the World Wild Web">
+        </div>
+        <div itemprop="author" itemscope itemtype="https://schema.org/Person">
+          <meta itemprop="name" content="David Lauzon">
+        </div>
+
+        <div class="image" style="background-image: url(http://localhost/images/default.jpg);"></div>
+
+        <header class="article-header">
+          <time itemprop="datePublished" pubdate="pubdate" datetime="2010-01-21T14:04:09&#43;00:00">Thu, Jan 21, 2010</time>
+          <h1 class="article-title">Getting started with QT Jambi on Linux</h1>
+        </header>
+
+        <div class="article-body" itemprop="articleBody">
+          
+
+<p>In this article I&#8217;ll explain how to install QT Jambi and write your first Hello world program.</p>
+
+<ol>
+<li>Installation of QT Jambi SDK</li>
+<li>Quick Overview of the SDK</li>
+<li>Integration with Eclipse</li>
+<li>Your first Jambi Program</li>
+<li>Jambi Links</li>
+</ol>
+
+<h2 id="installation-of-qt-jambi-sdk">Installation of QT Jambi SDK</h2>
+
+<p>First, you need to download the &#8220;Qt Jambi &#8211; Java bindings Binaries&#8221; for your OS (about 100MB), get it from� <a href="http://qt.nokia.com/downloads">here</a>. Since I am using Ubuntu, the following instructions will be for Linux. You can extract the archive where you want, but remember the path because we&#8217;ll need it later on &#8211; I&#8217;ll refer to ita s JAMBI_PATH (/usr/local/lib/qtjambi-linux32-lgpl-4.5.2_01 in this example).</p>
+
+<pre><code class="language-bash">tar -xzf qtjambi-linux32-lgpl-4.5.2_01.tar.gz
+sudo mv qtjambi-linux32-lgpl-4.5.2_01 /usr/local/lib/
+</code></pre>
+
+<p>Next we need to create a script to get QT Designer to generate .jui files for Java (instead QT/C++ .ui files). Name it jambi-designer.sh and insert the following code:</p>
+
+<pre><code class="language-bash">cd JAMBI_PATH
+export CLASSPATH=`pwd`/qtjambi-4.5.2_01.jar:`pwd`/qtjambi-examples-4.5.2_01.jar:`pwd`/qtjambi-linux32-gcc-4.5.2_01.jar
+export JAVADIR=/usr/lib/jvm/java-6-sun/jre
+./designer.sh
+</code></pre>
+
+<p>Make it executable and make it available in your path. Copy also the juic (jambi user interface compiler) which is used to convert the files generated by the Designer to java code.</p>
+
+<pre><code class="language-bash">sudo chmod a+x jambi-designer.sh
+sudo ln -s /JAMBI_PATH/jambi-designer.sh  /usr/local/bin/jambi-designer
+cp bin/juic /usr/local/bin/
+# try it :
+jambi-designer  &amp;
+</code></pre>
+
+<h2 id="quick-overview-of-the-sdk">Quick Overview of the SDK</h2>
+
+<p>So here you go you got the SDK installed. Now what are these files, do i need to install this huge file on every computer my program will run unto?? Obviously not!</p>
+
+<p>Well here, you to remember that when you&#8217;ll distribute your application, you&#8217;ll need to bundle it with the Jambi core package (qtjambi-4.5.2_01.jar) and the jambi os-dependant package (qtjambi-linux32-gcc-4.5.2_01.jar). That&#8217;s it!</p>
+
+<p>If you want the application to run on Windows as well, you only need to add one jar file per os (you&#8217;ll need to download the whole sdk just to get the .jar your need for each os).</p>
+
+<p>What else am I getting?</p>
+
+<table>
+  <tr>
+    <th>
+      Directory / file
+    </th>
+    <th>
+      Details
+    </th>
+  </tr>
+  
+  <tr>
+    <td>
+      bin
+    </td>
+    <td>
+      Designer and UI Compiler binaries
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      com/trolltech/
+    </td>
+    <td>
+      Jambi Core & Examples Source code
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      doc/
+    </td>
+    <td>
+      Jambi HTML Documentation (use your browser)
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      qtjambi.sh
+    </td>
+    <td>
+      Execute this script to view the numeros code samples
+    </td>
+  </tr>
+</table>
+
+<p><img src="/asset/2010/2/21/jambi_examples.jpg" alt="" width="442" height="354" /></p>
+
+<p>&nbsp;</p>
+
+<h2 id="integration-with-eclipse">Integration with Eclipse</h2>
+
+<p>So you want code auto-completion for Jambi classes in Eclipse? You&#8217;re dreaming! Nope, actually you can! Just download the &#8220;eclipse integration package&#8221; and extract it in the plugin directory of your Eclipse installation.</p>
+
+<p>Note : I haven&#8217;t been able to install the integration plugin with default Eclipse package in Kubuntu 9.10 because it does not allow you to add plugins as root. So to get around this, just uninstall it from the package manager and install it manually (get <a href="http://www.eclipse.org/downloads/">eclipse here</a>).</p>
+
+<pre><code class="language-bash">tar -xzf eclipse-java-galileo-SR1-linux-gtk.tar.gz
+sudo mv eclipse /opt/eclipse-3.5.1
+cd /opt/eclipse-3.5.1
+sudo tar -xzf /path/to/qtjambi-eclipse-integration-linux32-4.5.2_01.tar.gz
+./eclipse -clean
+</code></pre>
+
+<p>Next on Eclipse restart, go to Window &gt; Preferences &gt; QT Jambi Preference Page and use these settings :</p>
+
+<ul>
+<li>Jambi Location = where you installed the first archive (JAMBI_PATH)</li>
+<li>Generate files in separate folder = src/ui</li>
+</ul>
+
+<h2 id="your-first-jambi-program">Your first Jambi Program</h2>
+
+<ol>
+<li>Click on File &gt; New &gt; Other &gt; QT Jambi Project.</li>
+
+<li><p>Add a new class named &#8220;HelloWorld&#8221; and insert this code:</p>
+
+<pre><code class="language-java">import com.trolltech.qt.gui.*;
+
+public class HelloWorld extends QWidget{
+
+    public static void main(String[] args) {
+        // Instanciates a Jambi Application and pass it the command-line arguments to allow the QApplication
+        // static instance to handle the arguments it recognizes, such as -font and -style.
+        QApplication.initialize(args);
+
+        // Creates an instance of our QWidget (could be also a QMainWindow, QDialog, etc.)
+        // and set the parent to null
+        HelloWorld helloWorld = new HelloWorld(null);
+
+        // Create a new label and sets its parent to our view.
+        QLabel label = new QLabel(&quot;Ping World!&quot;, helloWorld);
+
+        // Show our view
+        helloWorld.show();
+
+        // Execute Jambi Application
+        QApplication.exec();
+    }
+
+    public HelloWorld(QWidget parent){
+        super(parent);
+    }
+}
+</code></pre></li>
+</ol>
+
+<h2 id="jambi-links">Jambi Links</h2>
+
+<ul>
+<li><a href="http://qt.nokia.com/doc/qtjambi-4.5.2_01/com/trolltech/qt/qtjambi-index.html">Jambi Documentation</a> (&#8220;Signals and Slots&#8221; is a recommanded reading)</li>
+<li><a href="http://qt.nokia.com/doc/qtjambi-4.5.2_01/index.html">Jambi Classes javadoc</a></li>
+<li><a href="file:///usr/local/lib/qtjambi-linux32-lgpl-4.5.2_01/doc/html/index.html">file:///usr/local/lib/qtjambi-linux32-lgpl-4.5.2_01/doc/html/index.html</a> (same as above but on your computer)</li>
+<li><a href="http://doc.trolltech.com/4.5/index.html">C++ QT Documentation</a> (the API is the same and sometimes you find more information than on Jambi)</li>
+<li><a href="http://www.informit.com/articles/article.aspx?p=1405564">Getting Started Article by Jasmin Blanchette</a> (including a part on how to integrate C++ components with QT Jambi)</li>
+<li><a href="http://qt.nokia.com/doc/qtjambi-4.5.2_01/com/trolltech/qt/qtjambi-examples.html">Jambi Examples</a></li>
+</ul>
+
+        </div>
+
+
+        <aside>
+          <div class="section"><a href="http://localhost/tags/eclipse" class="tag">eclipse</a> <a href="http://localhost/tags/jambi" class="tag">jambi</a> <a href="http://localhost/tags/java" class="tag">java</a> <a href="http://localhost/tags/linux" class="tag">linux</a> <a href="http://localhost/tags/qt" class="tag">qt</a> </div>
+
+          <div class="section share">
+            <a href="http://www.facebook.com/sharer.php?src=bm&u=http%3a%2f%2flocalhost%2f2010%2f01%2fgetting-started-with-qt-jambi-on-linux%2f&t=Getting%20started%20with%20QT%20Jambi%20on%20Linux" onclick="window.open(this.href, 'PCwindow', 'width=550, height=350, menubar=no, toolbar=no, scrollbars=yes'); return false;"><i class="fa fa-facebook"></i></a>
+            <a href="http://twitter.com/intent/tweet?url=http%3a%2f%2flocalhost%2f2010%2f01%2fgetting-started-with-qt-jambi-on-linux%2f&text=Getting%20started%20with%20QT%20Jambi%20on%20Linux&tw_p=tweetbutton" onclick="window.open(this.href, 'PCwindow', 'width=550, height=350, menubar=no, toolbar=no, scrollbars=yes'); return false;"><i class="fa fa-twitter"></i></a>
+            <a href="https://plus.google.com/share?url=http%3a%2f%2flocalhost%2f2010%2f01%2fgetting-started-with-qt-jambi-on-linux%2f" onclick="window.open(this.href, 'PCwindow', 'width=550, height=350, menubar=no, toolbar=no, scrollbars=yes'); return false;"><i class="fa fa-google-plus"></i></a>
+            <a href="http://getpocket.com/edit?url=http%3a%2f%2flocalhost%2f2010%2f01%2fgetting-started-with-qt-jambi-on-linux%2f&title=Getting%20started%20with%20QT%20Jambi%20on%20Linux" onclick="window.open(this.href, 'PCwindow', 'width=550, height=350, menubar=no, toolbar=no, scrollbars=yes'); return false;"><i class="fa fa-get-pocket"></i></a>
+          </div>
+
+          
+          
+          <div id="disqus_thread"></div>
+          <script type="text/javascript">
+(function() {
+  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  var disqus_shortname = 'davidlauzon';
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+          </script>
+          <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+          <a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+          
+          
+        </aside>
+
+      </article>
+    </div>
+
+    <div class="col-sm-3">
+      <aside class="site">
+
+  
+  <div class="section">
+    <header><div class="title">TableOfContents</div></header>
+    <div class="list-default"><nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#installation-of-qt-jambi-sdk">Installation of QT Jambi SDK</a></li>
+<li><a href="#quick-overview-of-the-sdk">Quick Overview of the SDK</a></li>
+<li><a href="#integration-with-eclipse">Integration with Eclipse</a></li>
+<li><a href="#your-first-jambi-program">Your first Jambi Program</a></li>
+<li><a href="#jambi-links">Jambi Links</a></li>
+</ul></li>
+</ul>
+</nav></div>
+  </div>
+  
+
+  
+
+  <div class="section">
+    <header><div class="title">LatestPosts</div></header>
+    <div class="content">
+      
+      <div class="sm"><article class="li">
+  <a href="http://localhost/2011/12/darky-rom-with-home-button-t959d/" class="clearfix">
+    <div class="image" style="background-image: url(http://localhost/images/default.jpg);"></div>
+    <div class="detail">
+      <time>Tue, Dec 27, 2011</time>
+      <h2 class="title">Darky ROM with HOME button on T959D (Galaxy S Fascinate)</h2>
+      <div class="summary">Hey! If you&#8217;ve installed the Darky Rom 10.2 (or 10.3) on your T959D phone (Samsung Galaxy S Fascinate), and you are missing the HOME and SEARCH key here is how to get them working : Install Darky ROM 10.2 Download the latest Odin 3 (I used Odin3 v1.85) * Start Odin Download DarkyROM_10.2_Resurrection.zip Extract the ZIP Put the pit file in PIT Tick repartition Put PDA.tar it into PDA Put phone in Download Mode (vol-down+home+pwr) Connect through USB to your computer (make sure Kies is off) Hit Start Sit back and relax while your phone gets resurrected The provided Odin 1.3 didn&#8217;t detected my phone, so I just used version 1.85 Install the key layout patch But since this ROM is for the I9000 phone which has a hardware HOME button, you need to install a patch to fix the T959D&#8217;s software buttons : Download the &#8220;Key Layout Update.zip&#8221; from this page Connect your phone to your computer as a mass storage device Copy the &#8220;Key Layout Update.zip&#8221; to your phone&#8217;s sd card.</div>
+    </div>
+  </a>
+</article>
+</div>
+      
+      <div class="sm"><article class="li">
+  <a href="http://localhost/2011/11/greppdf/" class="clearfix">
+    <div class="image" style="background-image: url(http://localhost/images/default.jpg);"></div>
+    <div class="detail">
+      <time>Sat, Nov 26, 2011</time>
+      <h2 class="title">Search within pdf files using grep</h2>
+      <div class="summary">Put this code snippet into a script named greppdf into your path : #!/bin/bash for PDF in *.pdf do NB_PAGES=`pdfinfo &quot;$PDF&quot; |grep &quot;Pages&quot; |cut -f 2 -d &quot;:&quot;` for (( PAGE=1; PAGE&lt;=$NB_PAGES; PAGE++ )) do pdftotext &quot;$PDF&quot; -f $PAGE -l $PAGE - | grep -i $@ | while read line; do echo &quot;$PDF:$PAGE:$line&quot;; done done done Now you can search through a directory of pdf, using this command (you can use as well regular grep parameters) : greppdf &quot;programming&quot; This will output the filename and slide number where the &ldquo;programming&rdquo; string is found.</div>
+    </div>
+  </a>
+</article>
+</div>
+      
+      <div class="sm"><article class="li">
+  <a href="http://localhost/2011/06/apache-virtual-host-using-a-symlink-to-home-directory/" class="clearfix">
+    <div class="image" style="background-image: url(http://localhost/images/default.jpg);"></div>
+    <div class="detail">
+      <time>Wed, Jun 29, 2011</time>
+      <h2 class="title">Apache virtual host using a symlink to home directory</h2>
+      <div class="summary">Forbidden : You don&#8217;t have the permission to access / on this server. If you see this error message, then perhaps you&#8217;re trying to use an Apache virtual host that&#8217;s located somewhere in your home directory? Well this could be because Apache doesn&#8217;t have the permissions to traverse the directory, and this post explains how to fix it with complete config files. In my case, my default apache document root is /var/www and I want to server /var/www/potdigger which is a symlink to /home/david/workspace/php/potdigger_backend .</div>
+    </div>
+  </a>
+</article>
+</div>
+      
+      <div class="sm"><article class="li">
+  <a href="http://localhost/portfolio/" class="clearfix">
+    <div class="image" style="background-image: url(http://localhost/images/default.jpg);"></div>
+    <div class="detail">
+      <time>Sun, Jun 26, 2011</time>
+      <h2 class="title">Portfolio</h2>
+      <div class="summary"></div>
+    </div>
+  </a>
+</article>
+</div>
+      
+      <div class="sm"><article class="li">
+  <a href="http://localhost/2011/06/howdy-finally-switched-to-wordpress/" class="clearfix">
+    <div class="image" style="background-image: url(http://localhost/images/default.jpg);"></div>
+    <div class="detail">
+      <time>Sun, Jun 26, 2011</time>
+      <h2 class="title">Howdy! Finally switched to WordPress!</h2>
+      <div class="summary">I finally made it! Special thanks to Dave Murphy and Jacius for their instructions on migrating from Mephisto to WordPress. Now, I&#8217;ll be able to catchup with some articles!! Stay tuned!</div>
+    </div>
+  </a>
+</article>
+</div>
+      
+      <div class="sm"><article class="li">
+  <a href="http://localhost/projects/" class="clearfix">
+    <div class="image" style="background-image: url(http://localhost/images/default.jpg);"></div>
+    <div class="detail">
+      <time>Sat, Jun 25, 2011</time>
+      <h2 class="title">Projects</h2>
+      <div class="summary">Open Source Projects Android Time Tracker for Assembla API</div>
+    </div>
+  </a>
+</article>
+</div>
+      
+      <div class="sm"><article class="li">
+  <a href="http://localhost/about/" class="clearfix">
+    <div class="image" style="background-image: url(http://localhost/images/default.jpg);"></div>
+    <div class="detail">
+      <time>Sat, Jun 25, 2011</time>
+      <h2 class="title">About David Lauzon</h2>
+      <div class="summary">(english version coming soon&#8230;) Je suis un jeune leader dynamique possèdant 5 ans d&#8217;expérience professionnelle en programmation. Étant a l&#8217;aise avec le Bash, je développe principalement sous Linux mais je connais aussi bien MS Windows. Et bien que je sois spécialisé en Web 2.0 (Ruby/Rails, PHP, REST, Flash AS3, JavaScript/Ajax), je développe aussi des applications Desktop (QT C++, Java), mobiles (Android Java) et base de données SQL. Comme j&#8217;aspire a devenir architecte, je focus sur ma polyvalence dans plusieurs domaines de l&#8217;informatique.</div>
+    </div>
+  </a>
+</article>
+</div>
+      
+      <div class="sm"><article class="li">
+  <a href="http://localhost/2011/01/utilisation-de-googlemaps-en-java/" class="clearfix">
+    <div class="image" style="background-image: url(http://localhost/images/default.jpg);"></div>
+    <div class="detail">
+      <time>Sun, Jan 9, 2011</time>
+      <h2 class="title">Utilisation de GoogleMaps en Java</h2>
+      <div class="summary">Introduction Cet article s&#8217;adresse aux développeurs cherchant intégrer un système cartographique dans leur application Java. Vous trouverez ci-bas les résultats de mes recherches effectués lors de mes charges de laboratoire du cours Analyse et Conception de Logiciel l&#8217;École de Technologie Supérieure (ÉTS). Survol des possibilités étudiées Voici un schéma qui résume les options possibles. La légende est la suivante : en vert les options faciles, en orange difficulté moyenne, en rouge non-recommandée, et en grisées les options non explorées lors de cette recherche.</div>
+    </div>
+  </a>
+</article>
+</div>
+      
+      <div class="sm"><article class="li">
+  <a href="http://localhost/2010/02/use-svn-with-eclipse-galileo-on-ubuntu-9-10/" class="clearfix">
+    <div class="image" style="background-image: url(http://localhost/images/default.jpg);"></div>
+    <div class="detail">
+      <time>Sat, Feb 27, 2010</time>
+      <h2 class="title">Use svn with Eclipse Galileo on Ubuntu 9.10</h2>
+      <div class="summary">After wasting a lot of time myself, I thought this could serve some other people&#8230; So here&#8217;s how I did it : First install the Subclipse plugin Run sudo eclipse (that will install plugins system-wide) Eclipse &gt; Install new software &gt; Add Name = &#8220;whatever&#8221; Location = http://subclipse.tigris.org/update_1.6.x OK Work with: &#8220;whatever&#8221; Select these to install : CollabNet Merge Client Subclipse Subclipse Integration for Mylyn 3.x Subversion Client Adapter Subversion JavaHL Native Library Adapter Subversion Revision Graph If you get a &#8220;Subversion 1.6 contains a bug that causes Eclipse to crash &#8230;.</div>
+    </div>
+  </a>
+</article>
+</div>
+      
+      <div class="sm"><article class="li">
+  <a href="http://localhost/2010/02/how-to-use-qt-jambi-from-within-eclipse/" class="clearfix">
+    <div class="image" style="background-image: url(http://localhost/images/default.jpg);"></div>
+    <div class="detail">
+      <time>Sun, Feb 21, 2010</time>
+      <h2 class="title">How to use QT Jambi from within Eclipse</h2>
+      <div class="summary">This article is part 2 / 2 of using QT Jambi within Eclipse. Click here to read the first part of this article, &#8220;Getting started with QT Jambi on Linux&#8221;. The present article you will learn how to design forms within eclipse and structure your QT code using the MVC pattern : File &gt; New &gt; Other &gt; Qt Jambi Project (Using Designer Form) Name it JambiWeb Add a new QT Jambi Designer Form and ajust settings like on screenshot.</div>
+    </div>
+  </a>
+</article>
+</div>
+      
+    </div>
+  </div>
+
+  
+  <div class="section taxonomies">
+    <header><div class="title">category</div></header>
+    <div class="content">
+      <a href="http://localhost/categories/howtos">howtos</a><a href="http://localhost/categories/articles">articles</a><a href="http://localhost/categories/news">news</a>
+    </div>
+  </div>
+  
+  <div class="section taxonomies">
+    <header><div class="title">tag</div></header>
+    <div class="content">
+      <a href="http://localhost/tags/eclipse">eclipse</a><a href="http://localhost/tags/jambi">jambi</a><a href="http://localhost/tags/java">java</a><a href="http://localhost/tags/linux">linux</a><a href="http://localhost/tags/qt">qt</a><a href="http://localhost/tags/svn">svn</a><a href="http://localhost/tags/apache">apache</a><a href="http://localhost/tags/capistrano">capistrano</a><a href="http://localhost/tags/dreamhost">dreamhost</a><a href="http://localhost/tags/geocoding">geocoding</a>
+    </div>
+  </div>
+  
+
+</aside>
+
+    </div>
+
+  </div>
+
+      </div>
+
+    <footer class="site">
+      <p>&copy; 2011 David Lauzon</p>
+      <p>Powered by <a href="http://gohugo.io" target="_blank" rel="nofollow">Hugo</a>, Theme <a href="https://github.com/dim0627/hugo_theme_robust" target="_blank" rel="nofollow">robust</a> designed by <a href="http://yet.unresolved.xyz" target="_blank" rel="nofollow">Daisuke Tsuji</a></p>
+    </footer>
+
+    <script src="//code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    
+
+  </body>
+</html>
+
+</div>
